@@ -15,36 +15,56 @@ public class MainMenuScene : SceneLoader
             return;
         }
 
-        Player player = new Player();
-        player.Name = nameInput;
-        Console.WriteLine($"당신이 설정한 이름은 {player.Name} 입니다.");
+        GameManager.Instance.GeneratePlayer(nameInput);
+        Console.WriteLine($"당신이 설정한 이름은 {GameManager.Instance.Player.Name} 입니다.");
 
-        while (true)
+        bool isRunning = true;
+
+        while (isRunning)
         {
-            Console.WriteLine("이제 전투를 시작할 수 있습니다.\n\n0. 종료 \n1. 상태 보기\n2. 전투 시작\n\n원하시는 행동을 입력해주세요.\n>>");
+            Console.WriteLine("이제 전투를 시작할 수 있습니다.\n\n0. 종료 \n1. 상태 보기\n2. 전투 시작\n");
+            Console.Write("\n원하시는 행동을 입력해주세요.\n >>");
             string input = Console.ReadLine();
-            int inputInt;
 
-            if (int.TryParse(input, out inputInt) == false)
+            if (!int.TryParse(input, out int inputInt))
             {
-                ShowErrorMsg();
-                continue;
+                ShowErrorMsg(); continue;
             }
 
-            if (inputInt == 0) return;
-
-            else if (inputInt == 1)
+            switch (inputInt)
             {
-                SceneLoader statusScene = new StatusScene();
-                statusScene.LoadScene();
+                case 0:
+                    isRunning = false; // 루프 종료
+                    break;
+                case 1:
+                    new StatusScene().LoadScene();
+                    break;
+                case 2:
+                    new BattleScene().LoadScene();
+                    break;
+                default:
+                    ShowErrorMsg(); break;
             }
+            //if (int.TryParse(input, out inputInt) == false)
+            //{
+            //    ShowErrorMsg();
+            //    continue;
+            //}
 
-            else if (inputInt == 2)
-            {
-                SceneLoader battleScene = new BattleScene();
-                battleScene.LoadScene();
-            }
-            else ShowErrorMsg();
+            //if (inputInt == 0) return;
+
+            //else if (inputInt == 1)
+            //{
+            //    SceneLoader statusScene = new StatusScene();
+            //    statusScene.LoadScene();
+            //}
+
+            //else if (inputInt == 2)
+            //{
+            //    SceneLoader battleScene = new BattleScene();
+            //    battleScene.LoadScene();
+            //}
+            //else ShowErrorMsg();
         }
     }
 
