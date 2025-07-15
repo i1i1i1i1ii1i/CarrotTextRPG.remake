@@ -6,20 +6,21 @@ public class MainMenuScene : SceneLoader
 {
     public override void LoadScene()
     {
+        Console.WriteLine("스파르타 던전에 오신 여러분 환영합니다.\n 이름을 입력해 주세요.\n>>");
+        string nameInput = Console.ReadLine();
+
+        if (nameInput == null)
+        {
+            ShowErrorMsg();
+            return;
+        }
+
+        Player player = new Player();
+        player.Name = nameInput;
+        Console.WriteLine($"당신이 설정한 이름은 {player.Name} 입니다.");
+
         while (true)
         {
-            Console.WriteLine("스파르타 던전에 오신 여러분 환영합니다.\n 이름을 입력해 주세요.\n>>");
-            string nameInput = Console.ReadLine();
-
-            if (nameInput == null)
-            {
-                ShowErrorMsg();
-                return;
-            }
-
-            Player player = new Player();
-            player.Name = nameInput;
-            Console.WriteLine($"당신이 설정한 이름은 {player.Name} 입니다.");
             Console.WriteLine("이제 전투를 시작할 수 있습니다.\n\n0. 종료 \n1. 상태 보기\n2. 전투 시작\n\n원하시는 행동을 입력해주세요.\n>>");
             string input = Console.ReadLine();
             int inputInt;
