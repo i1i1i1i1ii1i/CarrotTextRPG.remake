@@ -17,42 +17,42 @@ namespace carrotTextRPG
         {
             Console.Clear();
             Console.WriteLine("따가운 햇살이 눈꺼풀 사이로 파고든다.");
-            Thread.Sleep(1000);
+            Thread.Sleep(500);
             Console.WriteLine("뜨거운 모래 위에 몸을 뉘인 채, 당신은 천천히 정신을 되찾는다.");
-            Thread.Sleep(1000);
+            Thread.Sleep(500);
             Console.WriteLine("주변을 둘러보지만, 인적은커녕 발자국 하나 보이지 않는다.");
-            Thread.Sleep(1000);
+            Thread.Sleep(500);
             Console.WriteLine("정신은 몽롱하고, 입은 짠 물로 가득 차 있다.");
-            Thread.Sleep(1000);
+            Thread.Sleep(500);
             Console.WriteLine("당신은 온몸이 젖어있는 걸 깨닫는다.");
-            Thread.Sleep(1000);
+            Thread.Sleep(500);
             Console.WriteLine("당신은 누구인가?");
-            Thread.Sleep(1000);
+            Thread.Sleep(500);
             Console.WriteLine("어째서 이 외딴 섬에 홀로 있는 것인가?");
-            Thread.Sleep(1000);
+            Thread.Sleep(500);
             Console.ReadKey();
         }
         public static void CreatCharacter()
         {
             Console.Clear();
             Console.WriteLine("품 안에서 날카로운 것에 긁히는 기분이 들어 옷 속을 살펴보니");
-            Thread.Sleep(1000);
+            Thread.Sleep(500);
             Console.WriteLine("짧은 날붙이 하나와 가죽으로 둘러싸여 있는 책이 한권 나왔다.");
-            Thread.Sleep(1000);
+            Thread.Sleep(500);
             Console.Write("갈색 가죽으로 덮인 책의 오른쪽 구석에 검은색 잉크로 ");
             Console.BackgroundColor = ConsoleColor.White;
             Console.ForegroundColor = ConsoleColor.Black;
             Console.Write("무언가");
             Console.ResetColor();
             Console.WriteLine("가 적혀 있다.");
-            Thread.Sleep(1000);
+            Thread.Sleep(500);
             Console.WriteLine(">> 이름을 입력해주세요.");
             string name = Console.ReadLine(); // 이름을 입력받아 DB에 저장
             Console.WriteLine($"{name}");
             Console.WriteLine("무슨 의미인지는 모르겠지만");
-            Thread.Sleep(1000);
+            Thread.Sleep(500);
             Console.WriteLine("뭔가 입에 익은 느낌이 든다.");
-            Thread.Sleep(1000);
+            Thread.Sleep(500);
             Console.ReadKey();
         }
 
@@ -60,11 +60,11 @@ namespace carrotTextRPG
         {
             Console.Clear();
             Console.WriteLine("힘겹게 한 층을 내려오니 눈 앞에 하나의 석판이 있다.");
-            Thread.Sleep(1000);
+            Thread.Sleep(500);
             Console.WriteLine("석판에는 알 수 없는 문자가 새겨져 있다.");
-            Thread.Sleep(1000);
+            Thread.Sleep(500);
             Console.WriteLine("석판에 손을 대자, 눈 앞에 문자가 떠오른다.");
-            Thread.Sleep(1000);
+            Thread.Sleep(500);
 
             string[] jobLines = {
         " 1  2  3",
@@ -115,7 +115,7 @@ namespace carrotTextRPG
             Thread.Sleep(500);
             Console.WriteLine("체  력: 100 / 100"); // DB에서 Player의 CurrentHP와 MaxHP를 가져와서 출력
             Thread.Sleep(500);
-            Console.WriteLine("마  나: 50"); // DB에서 Player의 CurrentMP와 MaxMP를 가져와서 출력
+            Console.WriteLine("마  나: 50 / 50"); // DB에서 Player의 CurrentMP와 MaxMP를 가져와서 출력
             Thread.Sleep(500);
             Console.WriteLine("공격력: 10"); // DB에서 Player의 Attack을 가져와서 출력
             Thread.Sleep(500);
@@ -128,11 +128,11 @@ namespace carrotTextRPG
             Console.Clear();
             Console.WriteLine("당신의 가방에서 소지품을 확인합니다.");
             Thread.Sleep(1000);
-            foreach (var item in GameManager.Player.Inventory) // DB에서 Player의 Inventory를 가져와서 출력
-            {
-                Console.WriteLine($"{item.EquiMark} {item.Name} | ");
-                Thread.Sleep(500);
-            }
+            //foreach (var item in GameManager.Player.Inventory) // DB에서 Player의 Inventory를 가져와서 출력
+            //{
+            //    Console.WriteLine($"{item.EquiMark} {item.Name} | ");
+            //    Thread.Sleep(500);
+            //}
         }
         public static void ShowHelp()
         {
@@ -150,6 +150,12 @@ namespace carrotTextRPG
             Console.WriteLine("게임을 종료하려면 '종료'를 입력하세요.");
             Thread.Sleep(500);
             Console.ReadKey();
+        }
+
+        public static void DungeonEnter()
+        {
+            Console.Clear();
+
         }
         private static void WriteCentered(string text) // 텍스트 가운데 정렬
         {

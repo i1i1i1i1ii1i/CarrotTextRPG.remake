@@ -9,6 +9,10 @@ class Program
         //GameManager gameManger = new GameManager();
         //SceneLoader scene = new MainMenuScene();
         //scene.LoadScene();
-        UI.ShowStatus();
+        Console.SetWindowSize(80, 40);
+        Console.SetBufferSize(80, 40);
+        
+
+        Console.ReadKey();
     }
 }
