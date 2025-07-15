@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CarrotTextRPG
+namespace carrotTextRPG
 {
     public class UI
     {
@@ -47,13 +47,116 @@ namespace CarrotTextRPG
             Console.WriteLine("가 적혀 있다.");
             Thread.Sleep(1000);
             Console.WriteLine(">> 이름을 입력해주세요.");
-            string name = Console.ReadLine();
+            string name = Console.ReadLine(); // 이름을 입력받아 DB에 저장
             Console.WriteLine($"{name}");
             Console.WriteLine("무슨 의미인지는 모르겠지만");
             Thread.Sleep(1000);
             Console.WriteLine("뭔가 입에 익은 느낌이 든다.");
             Thread.Sleep(1000);
             Console.ReadKey();
+        }
+
+        public static void ChooseClass()
+        {
+            Console.Clear();
+            Console.WriteLine("힘겹게 한 층을 내려오니 눈 앞에 하나의 석판이 있다.");
+            Thread.Sleep(1000);
+            Console.WriteLine("석판에는 알 수 없는 문자가 새겨져 있다.");
+            Thread.Sleep(1000);
+            Console.WriteLine("석판에 손을 대자, 눈 앞에 문자가 떠오른다.");
+            Thread.Sleep(1000);
+
+            string[] jobLines = {
+        " 1  2  3",
+        "전 궁 마",
+        "      법",
+        "사 수 사"
+    };
+
+            foreach (string line in jobLines)
+            {
+                WriteCentered(line);
+                Thread.Sleep(300);
+            }
+            Console.WriteLine("직업을 선택해주세요.");
+            Console.Write(">>>"); // 받은 직업을 DB에 저장되어있는 플레이어의 직업으로 선택
+            int job = int.Parse(Console.ReadLine());
+            switch(job){
+                case 1:
+                    Console.WriteLine("전사가 선택되었습니다.");
+                    //스테이터스 전사로 조정
+                    break;
+                case 2:
+                    Console.WriteLine("궁수가 선택되었습니다.");
+                    //스테이터스 궁수로 조정
+                    break;
+                case 3:
+                    Console.WriteLine("마법사가 선택되었습니다.");
+                    //스테이터스 마법사로 조정
+                    break;
+
+            }
+            Thread.Sleep(1000);
+            Console.WriteLine("스테이터스가 직업에 맞춰 조정됩니다.");
+
+            Console.ReadKey();
+        }
+
+        public static void ShowStatus()
+        {
+            Console.Clear();
+            Console.WriteLine("계단 앞의 석판을 만지자 글씨가 빛납니다.");
+            Thread.Sleep(1000);
+            Console.WriteLine("이  름: 플레이어"); // DB에서 Player의 Name을 가져와서 출력
+            Thread.Sleep(500);
+            Console.WriteLine("직  업: 전사"); // DB에서 Player의 Job을 가져와서 출력
+            Thread.Sleep(500);
+            Console.WriteLine("레  벨: 1"); // DB에서 Player의 레벨을 가져와서 출력
+            Thread.Sleep(500);
+            Console.WriteLine("체  력: 100 / 100"); // DB에서 Player의 CurrentHP와 MaxHP를 가져와서 출력
+            Thread.Sleep(500);
+            Console.WriteLine("마  나: 50"); // DB에서 Player의 CurrentMP와 MaxMP를 가져와서 출력
+            Thread.Sleep(500);
+            Console.WriteLine("공격력: 10"); // DB에서 Player의 Attack을 가져와서 출력
+            Thread.Sleep(500);
+            Console.WriteLine("방어력: 5"); // DB에서 Player의 Defense를 가져와서 출력
+            Thread.Sleep(1000);
+            Console.ReadKey();
+        }
+        public static void ShowInventory()
+        {
+            Console.Clear();
+            Console.WriteLine("당신의 가방에서 소지품을 확인합니다.");
+            Thread.Sleep(1000);
+            foreach (var item in GameManager.Player.Inventory) // DB에서 Player의 Inventory를 가져와서 출력
+            {
+                Console.WriteLine($"{item.EquiMark} {item.Name} | ");
+                Thread.Sleep(500);
+            }
+        }
+        public static void ShowHelp()
+        {
+            Console.Clear();
+            Console.WriteLine("도움말입니다.");
+            Thread.Sleep(1000);
+            Console.WriteLine("게임을 시작하려면 '시작'을 입력하세요.");
+            Thread.Sleep(500);
+            Console.WriteLine("캐릭터를 생성하려면 '캐릭터 생성'을 입력하세요.");
+            Thread.Sleep(500);
+            Console.WriteLine("스테이터스를 확인하려면 '스테이터스'를 입력하세요.");
+            Thread.Sleep(500);
+            Console.WriteLine("인벤토리를 확인하려면 '인벤토리'를 입력하세요.");
+            Thread.Sleep(500);
+            Console.WriteLine("게임을 종료하려면 '종료'를 입력하세요.");
+            Thread.Sleep(500);
+            Console.ReadKey();
+        }
+        private static void WriteCentered(string text) // 텍스트 가운데 정렬
+        {
+            int width = Console.WindowWidth;
+            int pad = (width - text.Length) / 2;
+            if (pad < 0) pad = 0;
+            Console.WriteLine(new string(' ', pad) + text);
         }
     }
 }
