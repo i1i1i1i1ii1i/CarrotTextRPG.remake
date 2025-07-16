@@ -40,13 +40,13 @@ public class GameManager
         };
     }
 
-    public void AddItem()
+    public void AddItem(string name, string type, int buffValue, int itemNumber)
     {
         var item = new Item(name, type, buffValue, itemNumber);
         Items.Add(item);
     }
 
-    public void AddEnemy()
+    public void AddEnemy(string name, int hp, int attack)
     {
         var enemy = new Enemy(name, hp, attack);
         Enemies.Add(enemy);
