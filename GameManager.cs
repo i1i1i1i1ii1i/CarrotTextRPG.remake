@@ -7,8 +7,8 @@ namespace carrotTextRPG;
 public class GameManager
 {
     private static GameManager instance;
-    public List<Item> Items {  get; private set; }
-    public List<Enemy> Enemies { get; private set; }
+    public List<Item> Items { get; private set; } = new List<Item>();
+    public List<Enemy> Enemies { get; private set; } = new List<Enemy>();
 
     public static GameManager Instance
     {
