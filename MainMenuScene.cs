@@ -24,10 +24,7 @@ public class MainMenuScene : SceneLoader
         while (isRunning)
         {
 
-            Console.WriteLine("이제 전투를 시작할 수 있습니다.\n\n0. 종료 \n1. 상태 보기\n2. 전투 시작\n3. 상점\n\n원하시는 행동을 입력해주세요.\n>>");
-
-            
-            Console.Write("\n원하시는 행동을 입력해주세요.\n >>");
+            Console.WriteLine("이제 전투를 시작할 수 있습니다.\n\n0. 종료 \n1. 상태 보기\n2. 전투 시작\n3. 인벤토리\n4. 상점\n\n원하시는 행동을 입력해주세요.\n>>");
 
             string input = Console.ReadLine();
 
@@ -47,43 +44,15 @@ public class MainMenuScene : SceneLoader
                 case 2:
                     new BattleScene().LoadScene();
                     break;
+                case 3:
+                    new InventoryScene().LoadScene();
+                    break;
+                case 4:
+                    new ShopScene().LoadScene();
+                    break;
                 default:
                     ShowErrorMsg(); break;
-            }
-            //if (int.TryParse(input, out inputInt) == false)
-            //{
-            //    ShowErrorMsg();
-            //    continue;
-            //}
-
-
-            else if (inputInt == 2)
-            {
-                SceneLoader battleScene = new BattleScene();
-                battleScene.LoadScene();
-            }
-            else if (inputInt == 3)
-            {
-                SceneLoader shopscene = new ShopScene();
-                shopscene.LoadScene();
-            }
-            else ShowErrorMsg();
-
-            //if (inputInt == 0) return;
-
-            //else if (inputInt == 1)
-            //{
-            //    SceneLoader statusScene = new StatusScene();
-            //    statusScene.LoadScene();
-            //}
-
-            //else if (inputInt == 2)
-            //{
-            //    SceneLoader battleScene = new BattleScene();
-            //    battleScene.LoadScene();
-            //}
-            //else ShowErrorMsg();
-
+            }       
         }
     }
 

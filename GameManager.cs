@@ -1,10 +1,6 @@
-using System;
-
-
-
-using System.Collections.Generic;
-
 using CarrotTextRPG;
+using System;
+using System.Collections.Generic;
 
 namespace carrotTextRPG;
 
@@ -36,7 +32,9 @@ public class GameManager
             Attack = 10,
             Armor = 5,
             Gold = 1500,
-            //Inventory = new List<Item>()
+
+            Inventory = new List<Item>()
+            
         };
     }
 }
