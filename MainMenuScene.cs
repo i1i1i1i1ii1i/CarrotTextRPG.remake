@@ -50,40 +50,6 @@ public class MainMenuScene : SceneLoader
                 default:
                     ShowErrorMsg(); break;
             }
-            //if (int.TryParse(input, out inputInt) == false)
-            //{
-            //    ShowErrorMsg();
-            //    continue;
-            //}
-
-
-            else if (inputInt == 2)
-            {
-                SceneLoader battleScene = new BattleScene();
-                battleScene.LoadScene();
-            }
-            else if (inputInt == 3)
-            {
-                SceneLoader shopscene = new ShopScene();
-                shopscene.LoadScene();
-            }
-            else ShowErrorMsg();
-
-            //if (inputInt == 0) return;
-
-            //else if (inputInt == 1)
-            //{
-            //    SceneLoader statusScene = new StatusScene();
-            //    statusScene.LoadScene();
-            //}
-
-            //else if (inputInt == 2)
-            //{
-            //    SceneLoader battleScene = new BattleScene();
-            //    battleScene.LoadScene();
-            //}
-            //else ShowErrorMsg();
-
         }
     }
 

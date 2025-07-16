@@ -1,9 +1,5 @@
 using System;
-
-
-
 using System.Collections.Generic;
-
 using CarrotTextRPG;
 
 namespace carrotTextRPG;
@@ -11,6 +7,8 @@ namespace carrotTextRPG;
 public class GameManager
 {
     private static GameManager instance;
+    public List<Item> Items {  get; private set; }
+    public List<Enemy> Enemies { get; private set; }
 
     public static GameManager Instance
     {
@@ -36,8 +34,21 @@ public class GameManager
             Attack = 10,
             Armor = 5,
             Gold = 1500,
+            Critical = 15,
+            Dodge = 10,
             Inventory = new List<Item>()
         };
     }
-}
 
+    public void AddItem()
+    {
+        var item = new Item(name, type, buffValue, itemNumber);
+        Items.Add(item);
+    }
+
+    public void AddEnemy()
+    {
+        var enemy = new Enemy(name, hp, attack);
+        Enemies.Add(enemy);
+    }
+}
