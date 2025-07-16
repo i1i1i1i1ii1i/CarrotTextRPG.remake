@@ -7,7 +7,7 @@ public class MainMenuScene : SceneLoader
 {
     public override void LoadScene()
     {
-        Console.WriteLine("½ºÆÄ¸£Å¸ ´øÀü¿¡ ¿À½Å ¿©·¯ºĞ È¯¿µÇÕ´Ï´Ù.\n ÀÌ¸§À» ÀÔ·ÂÇØ ÁÖ¼¼¿ä.\n>>");
+        Console.WriteLine("ìŠ¤íŒŒë¥´íƒ€ ë˜ì „ì— ì˜¤ì‹  ì—¬ëŸ¬ë¶„ í™˜ì˜í•©ë‹ˆë‹¤.\n ì´ë¦„ì„ ì…ë ¥í•´ ì£¼ì„¸ìš”.\n>>");
         string nameInput = Console.ReadLine();
 
         if (nameInput == null)
@@ -16,29 +16,46 @@ public class MainMenuScene : SceneLoader
             return;
         }
 
-        Player player = new Player();
-        player.Name = nameInput;
-        Console.WriteLine($"´ç½ÅÀÌ ¼³Á¤ÇÑ ÀÌ¸§Àº {player.Name} ÀÔ´Ï´Ù.");
+        GameManager.Instance.GeneratePlayer(nameInput);
+        Console.WriteLine($"ë‹¹ì‹ ì´ ì„¤ì •í•œ ì´ë¦„ì€ {GameManager.Instance.Player.Name} ì…ë‹ˆë‹¤.");
 
-        while (true)
+        bool isRunning = true;
+
+        while (isRunning)
         {
-            Console.WriteLine("ÀÌÁ¦ ÀüÅõ¸¦ ½ÃÀÛÇÒ ¼ö ÀÖ½À´Ï´Ù.\n\n0. Á¾·á \n1. »óÅÂ º¸±â\n2. ÀüÅõ ½ÃÀÛ\n3. »óÁ¡\n\n¿øÇÏ½Ã´Â Çàµ¿À» ÀÔ·ÂÇØÁÖ¼¼¿ä.\n>>");
+
+            Console.WriteLine("ì´ì œ ì „íˆ¬ë¥¼ ì‹œì‘í•  ìˆ˜ ìˆìŠµë‹ˆë‹¤.\n\n0. ì¢…ë£Œ \n1. ìƒíƒœ ë³´ê¸°\n2. ì „íˆ¬ ì‹œì‘\n3. ìƒì \n\nì›í•˜ì‹œëŠ” í–‰ë™ì„ ì…ë ¥í•´ì£¼ì„¸ìš”.\n>>");
+
+            
+            Console.Write("\nì›í•˜ì‹œëŠ” í–‰ë™ì„ ì…ë ¥í•´ì£¼ì„¸ìš”.\n >>");
+
             string input = Console.ReadLine();
-            int inputInt;
 
-            if (int.TryParse(input, out inputInt) == false)
+            if (!int.TryParse(input, out int inputInt))
             {
-                ShowErrorMsg();
-                continue;
+                ShowErrorMsg(); continue;
             }
 
-            if (inputInt == 0) return;
-
-            else if (inputInt == 1)
+            switch (inputInt)
             {
-                SceneLoader statusScene = new StatusScene();
-                statusScene.LoadScene();
+                case 0:
+                    isRunning = false; // ë£¨í”„ ì¢…ë£Œ
+                    break;
+                case 1:
+                    new StatusScene().LoadScene();
+                    break;
+                case 2:
+                    new BattleScene().LoadScene();
+                    break;
+                default:
+                    ShowErrorMsg(); break;
             }
+            //if (int.TryParse(input, out inputInt) == false)
+            //{
+            //    ShowErrorMsg();
+            //    continue;
+            //}
+
 
             else if (inputInt == 2)
             {
@@ -51,11 +68,27 @@ public class MainMenuScene : SceneLoader
                 shopscene.LoadScene();
             }
             else ShowErrorMsg();
+
+            //if (inputInt == 0) return;
+
+            //else if (inputInt == 1)
+            //{
+            //    SceneLoader statusScene = new StatusScene();
+            //    statusScene.LoadScene();
+            //}
+
+            //else if (inputInt == 2)
+            //{
+            //    SceneLoader battleScene = new BattleScene();
+            //    battleScene.LoadScene();
+            //}
+            //else ShowErrorMsg();
+
         }
     }
 
     private void ShowErrorMsg()
     {
-        Console.WriteLine("Àß¸øµÈ ÀÔ·Â. ´Ù½Ã ½ÃµµÇÏ¼¼¿ä.");
+        Console.WriteLine("ì˜ëª»ëœ ì…ë ¥. ë‹¤ì‹œ ì‹œë„í•˜ì„¸ìš”.");
     }
 }
