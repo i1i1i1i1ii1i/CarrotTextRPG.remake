@@ -1,6 +1,6 @@
+using CarrotTextRPG;
 using System;
 using System.Collections.Generic;
-using CarrotTextRPG;
 
 namespace carrotTextRPG;
 
@@ -34,10 +34,15 @@ public class GameManager
             Attack = 10,
             Armor = 5,
             Gold = 1500,
+
+
+            Inventory = new List<Item>()
+     
             Critical = 15,
             Dodge = 10,
-            Inventory = new List<Item>()
+            
         };
+        Items = new List<Item>();
     }
 
     public void AddItem(string name, string type, int buffValue, int itemNumber)
