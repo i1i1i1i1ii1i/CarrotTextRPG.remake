@@ -42,14 +42,17 @@ public class MainMenuScene : SceneLoader
                     new StatusScene().LoadScene();
                     break;
                 case 2:
-                    new BattleScene().LoadScene();
+                    new BattleScene(GameManager.Instance.Player).LoadScene();
                     break;
                 case 3:
                     new ShopScene().LoadScene();
                     break;
                 default:
                     ShowErrorMsg(); break;
+
             }       
+
+
         }
     }
 
