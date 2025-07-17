@@ -1,3 +1,4 @@
+using CarrotTextRPG;
 using System;
 
 namespace carrotTextRPG;
@@ -32,10 +33,12 @@ public class StatusScene : SceneLoader
             Console.WriteLine($"체 력 : {GameManager.Instance.Player.HP}");
             Console.WriteLine($"Gold : {GameManager.Instance.Player.Gold} G\n");
             Console.WriteLine("0. 나가기\n");
+            Console.WriteLine("1. 인벤토리\n");
 
             Console.Write("\n원하시는 행동을 입력해주세요.\n>> ");
             string input = Console.ReadLine();
             if (input == "0") break;
+            else if (input == "1") new InventoryScene().LoadScene();
         }
         Console.Clear();
     }

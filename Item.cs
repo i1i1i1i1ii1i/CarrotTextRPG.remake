@@ -10,14 +10,16 @@ public class Item
     public string Description { get; set; }
     public int Price { get; set; }
     public bool Purchased { get; set; }
-    public bool Equipped { get; set; } = false;
-    public Item(string name, int attack, int armor, string description, int price)
+    public bool Equipped { get; set; }
+    public Item(string name, int attack, int armor, string description, int price, bool purchased = false)
     {
         Name = name;
         Attack = attack;
         Armor = armor;
         Description = description;
         Price = price;
+        Purchased = purchased;
+        Equipped = false;
     }
     public string GetStatText()
     {

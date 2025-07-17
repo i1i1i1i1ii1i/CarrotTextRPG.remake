@@ -36,6 +36,7 @@ public class GameManager
             Inventory = new List<Item>()
             
         };
+        Items = new List<Item>();
     }
 }
 
