@@ -10,7 +10,7 @@ namespace carrotTextRPG;
 //    public int itemNum { get; set; }
 //}
 
-public struct Item
+public struct Item 
 {
     public string Name { get; set; }
     public string Type { get; set; }
