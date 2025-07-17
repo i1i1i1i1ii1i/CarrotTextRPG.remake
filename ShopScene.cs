@@ -45,7 +45,7 @@ namespace CarrotTextRPG
             }
             Console.Clear();
         }
-        void BuyItem()
+        void BuyItem() //아이템을 사서 인벤토리에 저장하는 메서드입니다.
         {
             Console.Clear();
             Console.WriteLine("상점 - 아이템 구매");
@@ -89,7 +89,7 @@ namespace CarrotTextRPG
             Console.WriteLine("엔터를 누르면 돌아갑니다.");
             Console.ReadLine();
         }
-        void SellItem()
+        void SellItem() //BuyItem()메서드를 통해 구매한 아이템을 파는 메서드입니다. 인벤토리와 연결되어 있습니다.
         {
             Console.Clear();
             Console.WriteLine("상점 - 아이템 판매");

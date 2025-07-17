@@ -11,7 +11,7 @@ namespace CarrotTextRPG
         List<Item> items = GameManager.Instance.Player.Inventory;
         public override void LoadScene()
         {
-            
+            //여기는 처음 인벤토리 상태가 보이는 메서드입니다. 아이템이 출력됩니다.   
             while (true)
             {
                 Console.Clear();
@@ -44,7 +44,8 @@ namespace CarrotTextRPG
             }
             Console.Clear();
         }
-        void ManageEquip()
+        void ManageEquip() //아이템을 장착하는 메서드입니다. 아이템 클래스에서 갖고 온 리스트를 통해
+                           // 던전에서 가져온 아이템을 수정할 수 있습니다.
         {
             while (true)
             {
