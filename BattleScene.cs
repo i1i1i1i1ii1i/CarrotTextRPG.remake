@@ -2,25 +2,41 @@ using System;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Security.Cryptography.X509Certificates;
+using System.Collections.Generic;
 
 namespace carrotTextRPG;
 
 public class BattleScene : SceneLoader
 {
-    List<Enemy> EnemyList = new List<Enemy>();
+    private Player player;
+    private List<Enemy> TotalEnemies;
+    private List<Enemy> CurrentEnemies;
+
     
+    
+    public BattleScene(Player player)
+    {
+        this.player = player;
+        TotalEnemies = new List<Enemy>();
+        CurrentEnemies = new List<Enemy>();
+
+        EnemyInit();
+    }
 
     public override void LoadScene()
     {
+        Console.Clear();
+
         bool isMyturn = true;
 
-        Player player = new Player();
         // UI 들어올거고
         Console.WriteLine("Battle!");
-
+        
         // while 문 처리하고 
         Incounter(); // 씬 들어왔을때 랜덤으로 인카운터 해주고 ui에 표시
-
+        Display();
+        Console.WriteLine();
+        Console.WriteLine();
         Console.WriteLine("[내정보]");
         Console.WriteLine($"Lv.{player.Level} {player.Name} {player.Class}");
         Console.WriteLine($"{player.HP}");
@@ -83,21 +99,49 @@ public class BattleScene : SceneLoader
     public void Incounter() // 몬스터 랜덤 인카운터 
     {
         Random random = new Random();
-        Enemy enemy = new Enemy();
 
         int incounterNum = random.Next(1, 5);
 
         for(int i = 0; i< incounterNum; i++)
         {
-            int randomMonster = random.Next(0, 4); // << 몬스터의 리스트의 인덱스
-            Console.WriteLine(randomMonster); // 리스트 인덱스로 값받아와서 0 1 2 3;
-           // list(i) 에 해당하는 몬스터의 Status 불러오고 표시
-           // Console.WriteLine($"Lv.{enemy.Level} {enemy.Name} {enemy.HP}"); 
+            int randomMonster = random.Next(0, TotalEnemies.Count); // << 몬스터의 리스트의 인덱스
+            CurrentEnemies.Add(TotalEnemies[randomMonster]);
         }
+    }
+
+    public void Display()
+    {
+        foreach(var enemy in CurrentEnemies)
+        {
+            Console.Write($"{enemy.Name} / {enemy.Attack} \t");
+        }
+        Console.WriteLine();
+        foreach (var enemy in CurrentEnemies)
+        {
+            Console.Write($"   {enemy.HP}   ");
+        }
+    }
+
+    public void AttackEnemy()
+    {
+
+    }
+
+    public void TakeDamage()
+    {
+
     }
 
     public void Turn()
     {
 
+    }
+
+    private void EnemyInit()
+    {
+        TotalEnemies.Add(new Enemy("사람", 50, 5));
+        TotalEnemies.Add(new Enemy("괴물", 40, 3));
+        TotalEnemies.Add(new Enemy("외계생명체", 30, 4));
+        TotalEnemies.Add(new Enemy("돌", 20, 1));
     }
 }
