@@ -12,8 +12,6 @@ class Program
         scene.LoadScene();
         Console.SetWindowSize(80, 40);
         Console.SetBufferSize(80, 40);
-        
-
         Console.ReadKey();
     }
 }
