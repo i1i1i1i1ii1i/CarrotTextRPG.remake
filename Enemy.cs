@@ -9,7 +9,7 @@ namespace carrotTextRPG;
 //    public int Attack { get; set; }
 //}
 
-public struct Enemy
+public class Enemy
 {
     public string Name { get; set; }
     public int HP { get; set; }
