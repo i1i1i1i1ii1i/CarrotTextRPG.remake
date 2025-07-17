@@ -28,6 +28,7 @@ internal partial class Program
     private static int 공격력 = 10;
     private static int 방어력 = 5;
     private static int 체력 = 100;
+    private static int 마력 = 50;
     private static int 돈 = 200;
 
 
@@ -151,6 +152,7 @@ internal partial class Program
                 Console.WriteLine($"공격력 : {공격력}\n");
                 Console.WriteLine($"방어력 : {방어력}\n");
                 Console.WriteLine($"체력 : {체력}\n");
+                Console.WriteLine($"마나 : {마력}\n");
                 Console.WriteLine($"돈 : G{돈}\n");
                 Console.WriteLine("아무 키나 누르면 마을로 이동합니다.");
                 Console.WriteLine();
@@ -164,7 +166,8 @@ internal partial class Program
                 Console.WriteLine("어서 오십시오 무엇을 구입하시겠습니까?\n");
                 Console.WriteLine("1. 나무로 만들어진 무기: G150\n");
                 Console.WriteLine("2. 철로 만들어진 무기: G200\n");
-                Console.WriteLine();
+                Console.WriteLine("아무 키나 누르면 마을로 이동합니다.\n");
+                Console.Write("선택: ");
                 Console.ReadKey();
             }
 
