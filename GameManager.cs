@@ -6,9 +6,9 @@ namespace carrotTextRPG;
 
 public class GameManager
 {
-    private static GameManager instance;
-    public List<Item> Items { get; private set; } = new List<Item>();
-    public List<Enemy> Enemies { get; private set; } = new List<Enemy>();
+    private static GameManager instance; // 게임 매니저 싱글톤
+    public List<Item> Items { get; private set; } = new List<Item>(); // 아이템을 담을 리스트
+    public List<Enemy> Enemies { get; private set; } = new List<Enemy>(); //적 담을 리스트
 
     public static GameManager Instance
     {
@@ -24,7 +24,7 @@ public class GameManager
     //public List<Enemy> Enemies { get; private set; }
     //public List<Item> Items { get; private set; }
 
-    public void GeneratePlayer(string name)
+    public void GeneratePlayer(string name) // 플레이어 생성
     {
         Player = new Player()
         {
@@ -45,13 +45,13 @@ public class GameManager
         Items = new List<Item>();
     }
 
-    public void AddItem(string name, string type, int buffValue, int itemNumber)
+    public void AddItem(string name, string type, int buffValue, int itemNumber) // 아이템 추가
     {
         var item = new Item(name, type, buffValue, itemNumber);
         Items.Add(item);
     }
 
-    public void AddEnemy(string name, int hp, int attack)
+    public void AddEnemy(string name, int hp, int attack) // 적 추가
     {
         var enemy = new Enemy(name, hp, attack);
         Enemies.Add(enemy);
