@@ -9,9 +9,13 @@ class Program
         //GameManager gameManger = new GameManager();
         //SceneLoader scene = new MainMenuScene();
         //scene.LoadScene();
-        Console.SetWindowSize(80, 40);
-        Console.SetBufferSize(80, 40);
+        Console.SetWindowSize(90, 51);
+        Console.SetBufferSize(90, 51);
         
+        
+        UI.ShowLOGO();
+        UI.DungeonUI();
+
 
         Console.ReadKey();
     }

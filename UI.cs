@@ -134,29 +134,79 @@ namespace carrotTextRPG
             //    Thread.Sleep(500);
             //}
         }
-        public static void ShowHelp()
-        {
-            Console.Clear();
-            Console.WriteLine("도움말입니다.");
-            Thread.Sleep(1000);
-            Console.WriteLine("게임을 시작하려면 '시작'을 입력하세요.");
-            Thread.Sleep(500);
-            Console.WriteLine("캐릭터를 생성하려면 '캐릭터 생성'을 입력하세요.");
-            Thread.Sleep(500);
-            Console.WriteLine("스테이터스를 확인하려면 '스테이터스'를 입력하세요.");
-            Thread.Sleep(500);
-            Console.WriteLine("인벤토리를 확인하려면 '인벤토리'를 입력하세요.");
-            Thread.Sleep(500);
-            Console.WriteLine("게임을 종료하려면 '종료'를 입력하세요.");
-            Thread.Sleep(500);
-            Console.ReadKey();
-        }
 
         public static void DungeonEnter()
         {
             Console.Clear();
-
+            Console.WriteLine("하나밖에 없는 통로에 들어섭니다.");
+            Thread.Sleep(1000);
+            Console.WriteLine("동굴은 어둡고, 무척 좁습니다.");
+            Thread.Sleep(500);
+            Console.WriteLine("당신은 앞으로 전진하는 수 밖에 없다는 것을 깨닫습니다.");
+            Console.ReadKey();
         }
+
+        public static void DungeonPhase()
+        {
+            Console.Clear();
+        }
+
+        public static void NormalScript()
+        {
+            Console.Clear();
+            Console.CursorVisible = false;
+
+            DrawUILayout();
+
+            DrawToDisplay("디스플레이 영역");
+            DrawNormalTextBox("텍스트 영역");
+        }
+
+        public static void DungeonUI()
+        {
+            Console.Clear();
+            Console.CursorVisible = false;
+
+            DrawDungeonUILayout();
+
+            DrawToDisplay("던전 디스플레이 영역");
+            DrawNormalTextBox("던전 텍스트 영역");
+        }
+
+        public static void DrawUILayout()
+        {
+            for (int i = 25; i < 35; i++)
+            {
+                Console.Clear();
+                Console.SetCursorPosition(0, i);
+                Console.Write(new string('-', 90));
+            }
+        }
+
+            public static void DrawDungeonUILayout()
+        {
+            Console.SetCursorPosition(0, 25);
+            Console.Write(new string('-', 90));
+
+            for (int i = 26; i < 50; i++)
+            {
+                Console.SetCursorPosition(0, i);
+                Console.Write(new string(' ', 90));
+            }
+        }
+
+        public static void DrawToDisplay(string text)
+        {
+            Console.SetCursorPosition(0, 2);
+            ShowLOGO();
+        }
+
+        public static void DrawNormalTextBox(string text)
+        {
+            Console.SetCursorPosition(0, 26);
+            Console.WriteLine(text);
+        }
+
         private static void WriteCentered(string text) // 텍스트 가운데 정렬
         {
             int width = Console.WindowWidth;

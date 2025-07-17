@@ -48,7 +48,8 @@ public class MainMenuScene : SceneLoader
                     new BattleScene().LoadScene();
                     break;
                 default:
-                    ShowErrorMsg(); break;
+                    ShowErrorMsg();
+                    break;
             }
             //if (int.TryParse(input, out inputInt) == false)
             //{
