@@ -20,8 +20,7 @@ public class GameManager
             return instance;
         }
     }
-
-
+    
     public Player Player { get;  set; }
     public List<Item> Items { get; private set; }
     public void GeneratePlayer(string name)
@@ -31,6 +30,8 @@ public class GameManager
         {
             Name = name,
             Level = 1,
+            Exp = 0,
+            Class = "",
             HP = 100,
             Attack = 10,
             Armor = 5,
@@ -41,14 +42,6 @@ public class GameManager
         };
         Items = new List<Item>();
     }
-
-
-    //public void AddItem(string name, int attack, int armor, string description, int price, bool purchased = false)
-    //{
-    //    var item = new Items();
-
-    //    Items.Add(item);
-    //}
 
     public void AddEnemy(string name, int hp, int attack) // 적 추가
     {

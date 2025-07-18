@@ -84,15 +84,15 @@ namespace carrotTextRPG
             switch(job){
                 case 1:
                     Console.WriteLine("전사가 선택되었습니다.");
-                    //스테이터스 전사로 조정
+                    GameManager.Instance.Player.Class = "전사";
                     break;
                 case 2:
                     Console.WriteLine("궁수가 선택되었습니다.");
-                    //스테이터스 궁수로 조정
+                    GameManager.Instance.Player.Class = "궁수";
                     break;
                 case 3:
                     Console.WriteLine("마법사가 선택되었습니다.");
-                    //스테이터스 마법사로 조정
+                    GameManager.Instance.Player.Class = "마법사";
                     break;
 
             }
