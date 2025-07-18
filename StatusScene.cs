@@ -12,16 +12,17 @@ public class StatusScene : SceneLoader
         {
             int bonusAtk = 0;
             int bonusDef = 0;
+
             if (GameManager.Instance.Player.Inventory != null)
             {
                 foreach (var item in GameManager.Instance.Player.Inventory) //인벤토리와 연결된 아이템을 장착했을 공격력, 방어력이 증가
                 {
                     if (item.Equipped)
                     {
-                        bonusAtk += item.Attack; //공격력이 몇만큼 증가되었는지 기존 공격력에 더해서 출력
-                        bonusDef += item.Armor; // 방어력이 몇만큼 증가되었는지 기존 방어력에 더해서 출력
-                   }
-               }
+                        if (item.Type == "공격") bonusAtk += item.BuffValue;
+                        else bonusDef += item.BuffValue;
+                    }
+                }
             }
             Console.Clear();
             Console.WriteLine("상태 보기");
