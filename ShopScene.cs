@@ -67,7 +67,7 @@ namespace CarrotTextRPG
                 {
                     GameManager.Instance.Player.Gold -= item.Price;
                     item.Purchased = true;
-                    GameManager.Instance.Player.Inventory.Add(new Item(item.Name, item.Attack, item.Armor, item.Type,item.Description,item.Price, true));
+                    GameManager.Instance.Player.Inventory.Add(new Item(item.Name, item.Attack, item.Armor, item.Type, item.Description,item.Price, true));
                     Console.WriteLine("구매를 완료했습니다."); //인벤토리 리스트 안에 구매한 아이템 변수를 집어넣습니다.
                 }
                 else
