@@ -59,10 +59,6 @@ public class MainMenuScene : SceneLoader
                     break;
                 default:
                     ShowErrorMsg(); break;
-
-            }       
-
-
         }
     }
 

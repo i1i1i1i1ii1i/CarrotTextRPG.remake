@@ -1,9 +1,14 @@
 ﻿using System;
+using System.Runtime.InteropServices;
 
 namespace carrotTextRPG
 {
     public class UI
     {
+
+        static int width = 90, height = 51;
+        static int y = height;
+
         public static void ShowLOGO()
         {
             Console.WriteLine(",------.                                       ,--.       ,--.                   ,--. ");
@@ -11,10 +16,10 @@ namespace carrotTextRPG
             Console.WriteLine("|  `--, (  .-' | .--'' ,-.  || .-. || .-. :    |  |(  .-' |  |' ,-.  ||      \\' .-. | ");
             Console.WriteLine("|  `---..-'  `)\\ `--.\\ '-'  || '-' '\\   --.    |  |.-'  `)|  |\\ '-'  ||  ||  |\\ `-' | ");
             Console.WriteLine("`------'`----'  `---' `--`--'|  |-'  `----'    `--'`----' `--' `--`--'`--''--' `---'  ");
-            Console.ReadKey();
         }
 
         public static void StartScript()
+
         {
             Console.Clear();
             Console.WriteLine("따가운 햇살이 눈꺼풀 사이로 파고든다.");
@@ -117,8 +122,6 @@ namespace carrotTextRPG
             Thread.Sleep(500);
             Console.WriteLine("체  력: 100 / 100"); // DB에서 Player의 CurrentHP와 MaxHP를 가져와서 출력
             Thread.Sleep(500);
-            Console.WriteLine("마  나: 50 / 50"); // DB에서 Player의 CurrentMP와 MaxMP를 가져와서 출력
-            Thread.Sleep(500);
             Console.WriteLine("공격력: 10"); // DB에서 Player의 Attack을 가져와서 출력
             Thread.Sleep(500);
             Console.WriteLine("방어력: 5"); // DB에서 Player의 Defense를 가져와서 출력
@@ -137,31 +140,188 @@ namespace carrotTextRPG
             //    Thread.Sleep(500);
             //}
         }
-
-        public static void ShowHelp()
-        {
-            Console.Clear();
-            Console.WriteLine("도움말입니다.");
-            Thread.Sleep(1000);
-            Console.WriteLine("게임을 시작하려면 '시작'을 입력하세요.");
-            Thread.Sleep(500);
-            Console.WriteLine("캐릭터를 생성하려면 '캐릭터 생성'을 입력하세요.");
-            Thread.Sleep(500);
-            Console.WriteLine("스테이터스를 확인하려면 '스테이터스'를 입력하세요.");
-            Thread.Sleep(500);
-            Console.WriteLine("인벤토리를 확인하려면 '인벤토리'를 입력하세요.");
-            Thread.Sleep(500);
-            Console.WriteLine("게임을 종료하려면 '종료'를 입력하세요.");
-            Thread.Sleep(500);
-            Console.ReadKey();
-        }
-
         public static void DungeonEnter()
         {
             Console.Clear();
-
+            Console.WriteLine("하나밖에 없는 통로에 들어섭니다.");
+            Thread.Sleep(1000);
+            Console.WriteLine("동굴은 어둡고, 무척 좁습니다.");
+            Thread.Sleep(500);
+            Console.WriteLine("당신은 앞으로 전진하는 수 밖에 없다는 것을 깨닫습니다.");
+            Console.ReadKey();
         }
 
+        public static void DungeonPhase()
+        {
+            Console.Clear();
+        }
+
+        public static void NormalScript()
+        {
+            Console.Clear();
+            Console.CursorVisible = false;
+
+            DrawUILayout();
+
+            DrawToDisplay("디스플레이 영역");
+            DrawNormalTextBox("텍스트 영역");
+        }
+
+        public static async void DungeonUI()
+        {
+            Console.Clear();
+            Console.CursorVisible = false;
+
+            DrawDungeonUILayout();
+
+            DrawToDisplay("던전 디스플레이 영역");
+            DungeonTextUI();
+        }
+
+        public static void DrawUILayout()
+        {
+            for (int i=25; i < 50; i++)
+            {
+                Console.SetCursorPosition(0, i);
+                Console.Write(new string(' ', 90));
+            }
+        }
+
+        public static void DrawDungeonUILayout()
+        {
+            for (int i = 25; i < 40; i++)
+            {
+                Console.Clear();
+                Console.SetCursorPosition(0, i);
+                Console.Write(new string('-', 90));
+                Thread.Sleep(50);
+            }
+        }
+        
+        // currentHP / MaxHP 만약에 포션을 먹는데 !current=max 포션 사용 가능
+        // playerExp / NeedExp playerExp = NeedExp -> Lv ++
+        // if(EnemyHp=0) 
+        //                x o o
+        // x = 90/counter o o o
+        // 몬스터 나오는거는 따로 구분을 하면 좋을거같다.
+        // 메인->탐험씬->몬스터조우
+        //         cou      cou
+        static void DrawCursor(int selected)
+            {
+                if (selected == 0)
+                {
+                Console.SetCursorPosition(56, 46);
+                Console.Write("      ");
+                Console.SetCursorPosition(27, 46);
+                Console.Write("▲");
+
+                }
+                else if (selected == 1)
+                {
+                Console.SetCursorPosition(24, 46);
+                Console.Write("      ");
+                Console.SetCursorPosition(59, 46);
+                Console.Write("▲");
+
+
+            }
+
+                
+            }
+
+            //static void ClearCursor()
+            //{
+            //    Console.SetCursorPosition(26, 46);
+            //    Console.Write(" ");
+            //    Console.SetCursorPosition(58, 46);
+            //    Console.Write(" ");
+            //}
+
+
+
+
+        public static void DungeonTextUI()
+        {
+            int selected = 0;
+            bool selecting = true;
+            int spacing = width / 4;
+            
+
+            for(int i=0;i<=3;i++)
+            {
+                int x = spacing / i;
+            }
+
+            while (selecting)
+            {
+                DrawCursor(selected);
+
+                ConsoleKeyInfo keyInfo = Console.ReadKey(true);
+
+                if (keyInfo.Key == ConsoleKey.A || keyInfo.Key == ConsoleKey.LeftArrow)
+                {
+                    selected = 0; // 왼쪽
+                }
+                else if (keyInfo.Key == ConsoleKey.D || keyInfo.Key == ConsoleKey.RightArrow)
+                {
+                    selected = 1; // 오른쪽
+                }
+                else if (keyInfo.Key == ConsoleKey.Spacebar)
+                {
+                    selecting = false; // 선택 완료
+                }
+
+                Console.SetCursorPosition(0, 48);
+            }
+        }
+
+        public static void DrawToDisplay(string text)
+        {
+            Console.SetCursorPosition(0, 2);
+            ShowLOGO();
+        }
+
+        public static void DrawNormalTextBox(string text)
+        {
+            Console.SetCursorPosition(0, 26);
+            Console.WriteLine(text);
+        }
+
+        public static void MeetMonster() // 몬스터 만났을 때 자연스럽게 퍼지는 메서드
+        {
+
+            int monsterCount = 2;
+            int[] monsterHPs = new int[2] { 10, 0 };
+            //if (monterCount <= 0) return;
+
+            int spacing = width / (monsterCount + 1);
+
+            for (int i = 0; i < monsterCount; i++)
+            {
+                int x = spacing * (i+1);
+
+                if (x>=Console.WindowWidth)
+                {
+                    x = Console.WindowWidth - 2;
+                }
+
+                Console.SetCursorPosition(x, y);
+
+                if (monsterHPs[i] != 0)
+                {
+                    Console.Write("O");
+                    Console.SetCursorPosition(x, y + 1);
+                    Console.Write(monsterHPs[i]);
+
+                }
+                else
+                {
+                    Console.Write("X");
+                    Console.SetCursorPosition(x, y + 1);
+                    Console.Write(monsterHPs[i]);
+                }
+            }
+        }
         private static void WriteCentered(string text) // 텍스트 가운데 정렬
         {
             int width = Console.WindowWidth;
