@@ -33,7 +33,7 @@ public class Player
 
             foreach (var item in Inventory)
             {
-                if (item.Equipped && item.Type == "공격") value += item.attack;
+                if (item.Equipped && item.Type == "공격") value += item.Attack;
             }
             return Attack + value;
         }
@@ -47,7 +47,7 @@ public class Player
 
             foreach (var item in Inventory)
             {
-                if (item.Equipped && item.Type == "방어") value += item.armor;
+                if (item.Equipped && item.Type == "방어") value += item.Armor;
 
             }
             return Armor + value;
