@@ -7,19 +7,17 @@ public class Item
     public string Name { get; set; }
     public int Attack { get; set; }
     public int Armor { get; set; }
-    public int BuffValue { get; set; }
     public string Type { get; set; }
     public string Description { get; set; }
     public int Price { get; set; }
     public bool Purchased { get; set; }
     public bool Equipped { get; set; }
 
-    public Item(string name, int attack, int armor, int buffValue, string type, string description, int price, bool purchased = false) // 아이템 생성자
+    public Item(string name, int attack, int armor, string type, string description, int price, bool purchased = false) // 아이템 생성자
     {
         Name = name;
         Attack = attack;
         Armor = armor;
-        BuffValue = buffValue;
         Type = type;
         Description = description;
         Price = price;
