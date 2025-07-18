@@ -5,6 +5,13 @@ namespace carrotTextRPG;
 
 public class MainMenuScene : SceneLoader
 {
+    public MainMenuScene()
+    {
+        GameManager.Instance.AddEnemy("사람", 50, 5);
+        GameManager.Instance.AddEnemy("괴물", 40, 3);
+        GameManager.Instance.AddEnemy("외계생명체", 30, 4);
+        GameManager.Instance.AddEnemy("돌", 20, 1);
+    }
     public override void LoadScene()
     {
         Console.WriteLine("스파르타 던전에 오신 여러분 환영합니다.\n 이름을 입력해 주세요.\n>>");

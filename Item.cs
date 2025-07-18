@@ -11,6 +11,7 @@ namespace carrotTextRPG;
 //}
 
 public class Item
+
 {
     public string Name { get; set; }
     public int Attack { get; set; }

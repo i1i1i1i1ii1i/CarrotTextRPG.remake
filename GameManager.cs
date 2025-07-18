@@ -6,8 +6,10 @@ namespace carrotTextRPG;
 
 public class GameManager
 {
+
     private static GameManager instance;
     public List<Enemy> Enemies { get; private set; } = new List<Enemy>();
+
 
     public static GameManager Instance
     {
@@ -19,9 +21,11 @@ public class GameManager
         }
     }
 
+
     public Player Player { get;  set; }
     public List<Item> Items { get; private set; }
     public void GeneratePlayer(string name)
+
     {
         Player = new Player()
         {
@@ -38,13 +42,15 @@ public class GameManager
         Items = new List<Item>();
     }
 
+
     //public void AddItem(string name, int attack, int armor, string description, int price, bool purchased = false)
     //{
     //    var item = new Items();
+
     //    Items.Add(item);
     //}
 
-    public void AddEnemy(string name, int hp, int attack)
+    public void AddEnemy(string name, int hp, int attack) // 적 추가
     {
         var enemy = new Enemy(name, hp, attack);
         Enemies.Add(enemy);
