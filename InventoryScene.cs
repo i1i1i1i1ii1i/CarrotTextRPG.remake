@@ -28,7 +28,7 @@ namespace CarrotTextRPG
                 {
                     Console.WriteLine("[아이템 목록]");
                     int index = 1;
-                    foreach (var item in items)
+                    foreach (var item in items) //GameManager에 있는 Inventory 리스트 값을 가져온다.
                     {
                         Console.Write("- {0} ", index++);
                         if (item.Equipped) Console.Write("[E]");
@@ -80,7 +80,27 @@ namespace CarrotTextRPG
 
                 if (int.TryParse(input, out int idx) && idx >= 1 && idx <= items.Count)
                 {
+
                     items[idx - 1].Equipped = !items[idx - 1].Equipped;
+                    //Item item = items[idx - 1];
+
+                    //if (item.Equipped)
+                    //{
+                    //    item.Equipped = false;
+
+                    //    if (item.Type == "공격") GameManager.Instance.Player.Attack -= item.BuffValue;
+
+                    //    else if (item.Type == "방어") GameManager.Instance.Player.Armor -= item.BuffValue;
+                    //}
+
+                    //else
+                    //{
+                    //    item.Equipped = true;
+
+                    //    if (item.Type == "공격") GameManager.Instance.Player.Attack += item.BuffValue;
+
+                    //    else if (item.Type == "방어") GameManager.Instance.Player.Armor += item.BuffValue;
+                    //}
                 }
 
                 else

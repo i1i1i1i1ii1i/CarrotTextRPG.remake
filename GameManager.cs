@@ -39,6 +39,11 @@ public class GameManager
         };
     }
 
+    public void AddItem(string name, int attack, int armor, string type, string description, int price, bool purchased = false)
+    {
+        var item = new Item(name, attack, armor, type, description, price, purchased);
+        Items.Add(item);
+    }
     public void AddEnemy(string name, int hp, int attack, int exp) // 적 추가
     {
         var enemy = new Enemy(name, hp, attack,exp);

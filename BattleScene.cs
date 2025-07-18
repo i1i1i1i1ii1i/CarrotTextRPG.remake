@@ -100,12 +100,12 @@ public class BattleScene : SceneLoader
         {
             if (critical <= player.Critical)
             {
-                CurrentEnemies[select - 1].HP -= (player.Attack * 160) / 100; // 크리티컬
+                CurrentEnemies[select - 1].HP -= (player.AttackBoosted * 160) / 100; // 크리티컬
                 Console.WriteLine("크리티컬!");
             }
             else
             {
-                CurrentEnemies[select - 1].HP -= player.Attack; // 현재 선택한 enemy의 hp를 플레이어의 공격력으로 깎는다
+                CurrentEnemies[select - 1].HP -= player.AttackBoosted; // 현재 선택한 enemy의 hp를 플레이어의 공격력으로 깎는다
             }
 
             Console.WriteLine($"{CurrentEnemies[select - 1].Name} : {CurrentEnemies[select - 1].HP}"); // 주석 가능 
