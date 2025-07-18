@@ -11,5 +11,7 @@ public class Player
     public int HP { get; set; }
     public int Armor { get; set; }
     public int Gold { get; set; }
+    public int Critical { get; set; }
+    public int Dodge { get; set; }
     public List<Item> Inventory { get; set; }
 }

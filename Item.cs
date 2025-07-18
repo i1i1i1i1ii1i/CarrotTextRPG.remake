@@ -2,6 +2,14 @@ using System;
 
 namespace carrotTextRPG;
 
+//public class Item
+//{
+//    public string Name { get; set; }
+//    public string Type { get; set; }
+//    public int BuffValue { get; set; } // ¾ÆÀÌÅÛÀÌ ÁÖ´Â È¿°ú
+//    public int itemNum { get; set; }
+//}
+
 public class Item
 {
     public string Name { get; set; }
@@ -23,8 +31,9 @@ public class Item
     }
     public string GetStatText()
     {
-        if (Attack > 0) return $"���ݷ� +{Attack}";
-        else if (Armor > 0) return $"���� +{Armor}";
-        else return "�ɷ�ġ ����";
+        if (Attack > 0) return $"°ø°Ý·Â +{Attack}";
+        else if (Armor > 0) return $"¹æ¾î·Â +{Armor}";
+        else return "´É·ÂÄ¡ ¾øÀ½";
+
     }
 }
