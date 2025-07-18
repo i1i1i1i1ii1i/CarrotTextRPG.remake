@@ -80,7 +80,7 @@ namespace CarrotTextRPG
 
                 if (int.TryParse(input, out int idx) && idx >= 1 && idx <= items.Count)
                 {
-                 //   items[idx - 1].Equipped = !items[idx - 1].Equipped;
+                    items[idx - 1].Equipped = !items[idx - 1].Equipped;
                 }
 
                 else

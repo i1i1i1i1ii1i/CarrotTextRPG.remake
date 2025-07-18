@@ -39,9 +39,9 @@ public class GameManager
         };
     }
 
-    public void AddEnemy(string name, int hp, int attack) // 적 추가 함수
+    public void AddEnemy(string name, int hp, int attack, int exp) // 적 추가
     {
-        var enemy = new Enemy(name, hp, attack);
+        var enemy = new Enemy(name, hp, attack,exp);
         Enemies.Add(enemy);
     }
 }

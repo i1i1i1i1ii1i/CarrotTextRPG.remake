@@ -7,10 +7,10 @@ public class MainMenuScene : SceneLoader
 {
     public MainMenuScene()
     {
-        GameManager.Instance.AddEnemy("사람", 50, 5);
-        GameManager.Instance.AddEnemy("괴물", 40, 3);
-        GameManager.Instance.AddEnemy("외계생명체", 30, 4);
-        GameManager.Instance.AddEnemy("돌", 20, 1);
+        GameManager.Instance.AddEnemy("사람", 50, 5,20);
+        GameManager.Instance.AddEnemy("괴물", 40, 3,15);
+        GameManager.Instance.AddEnemy("외계생명체", 30, 4, 10);
+        GameManager.Instance.AddEnemy("돌", 20, 1, 5);
     }
     public override void LoadScene()
     {

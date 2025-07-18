@@ -7,9 +7,15 @@ public class Enemy
     public string Name { get; set; }
     public int HP { get; set; }
     public int Attack { get; set; }
+    public int RwdExp { get; set; }
 
-    public Enemy (string name, int hp, int attack) // Enemy »ý¼ºÀÚ 
-    {  Name = name; HP = hp; Attack = attack; } 
+    public Enemy (string name, int hp, int attack, int exp)
+    {  
+       Name = name;
+       HP = hp;
+       Attack = attack;
+       RwdExp = exp;
+    }
 
     public Enemy Clone() // Enemy Clone
     {

@@ -16,10 +16,12 @@ public class BattleScene : SceneLoader
     {
         this.player = player;
         CurrentEnemies = new List<Enemy>();
+
     }
 
     public override void LoadScene()
     {
+        CurrentEnemies.Clear();
         Console.Clear();
         // UI 들어올거고
         Console.WriteLine("Battle!");
@@ -45,6 +47,12 @@ public class BattleScene : SceneLoader
 
             EnemyAttack();
 
+            break;
+        }
+
+       for(int i  = 0; i < CurrentEnemies.Count; i++)
+        {
+            player.GainExp(CurrentEnemies[i].RwdExp);
         }
     }
 
@@ -108,11 +116,12 @@ public class BattleScene : SceneLoader
         }
     }
 
+
+
     private void EnemyAttack() // 여기서는 돌림빵만 구현
     {
         foreach(var attack in CurrentEnemies) // 
         {
-            
             int dotge = random.Next(0, 101);
             if(player.Dodge >= dotge)
             {
@@ -129,10 +138,12 @@ public class BattleScene : SceneLoader
         Console.WriteLine($"현재 체력 : {player.HP}");
     }
 
+   
 
-    
     private void RemoveDeadEnemies() // 리스트에서 피가 0 이하로 내려가면 제거
     {
         CurrentEnemies.RemoveAll(enemy => enemy.HP <= 0);
     }
+
+
 }
