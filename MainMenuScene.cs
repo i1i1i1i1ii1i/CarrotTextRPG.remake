@@ -49,7 +49,12 @@ public class MainMenuScene : SceneLoader
                     break;
                 default:
                     ShowErrorMsg(); break;
+<<<<<<< Updated upstream
             }
+=======
+
+            }       
+>>>>>>> Stashed changes
         }
     }
 
