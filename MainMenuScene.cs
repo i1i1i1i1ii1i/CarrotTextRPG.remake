@@ -58,17 +58,17 @@ public class MainMenuScene : SceneLoader
             //}
 
 
-            else if (inputInt == 2)
-            {
-                SceneLoader battleScene = new BattleScene();
-                battleScene.LoadScene();
-            }
-            else if (inputInt == 3)
-            {
-                SceneLoader shopscene = new ShopScene();
-                shopscene.LoadScene();
-            }
-            else ShowErrorMsg();
+            // else if (inputInt == 2)
+            // {
+            //     SceneLoader battleScene = new BattleScene();
+            //     battleScene.LoadScene();
+            // }
+            // else if (inputInt == 3)
+            // {
+            //     SceneLoader shopscene = new ShopScene();
+            //     shopscene.LoadScene();
+            // }
+            // else ShowErrorMsg();
 
             //if (inputInt == 0) return;
 

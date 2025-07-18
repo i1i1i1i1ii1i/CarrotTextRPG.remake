@@ -13,8 +13,8 @@ class Program
         Console.SetBufferSize(90, 51);
         
         
-        UI.ShowLOGO();
-        UI.DungeonUI();
+        //UI.ShowLOGO();
+        UI.NormalScript();
 
 
         Console.ReadKey();
