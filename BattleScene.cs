@@ -10,7 +10,8 @@ public class BattleScene : SceneLoader
 {
     private Player player;
     private List<Enemy> CurrentEnemies;
-    
+    Random random = new Random();
+
     public BattleScene(Player player)
     {
         this.player = player;
@@ -50,14 +51,14 @@ public class BattleScene : SceneLoader
 
     public void Incounter() // 몬스터 랜덤 인카운터 
     {
-        Random random = new Random();
-
         int incounterNum = random.Next(1, 5); // 1에서 4명까지 필요한만큼 수정 ㄱㄴ
 
         for(int i = 0; i< incounterNum; i++)
         {
             int randomMonster = random.Next(0, GameManager.Instance.Enemies.Count); // 가지고 있는 몬스터 전부에서 랜덤값 가져오기
-            CurrentEnemies.Add(GameManager.Instance.Enemies[randomMonster]);  // 게임에 나올 몬스터들 리스트
+
+            Enemy template = GameManager.Instance.Enemies[randomMonster];
+            CurrentEnemies.Add(template.Clone());  // 게임에 나올 몬스터들 리스트
         }
     }
 
@@ -84,13 +85,14 @@ public class BattleScene : SceneLoader
         if (!int.TryParse(attack, out select)) // 숫자만 받을수 있게, 입력받은 숫자를 Select에 넣음
         {
             Console.WriteLine("숫자만 입력해라 ㅇㅇ;");
+            return;
         }
 
         if (select <= CurrentEnemies.Count && select > 0) // Select 보다 적거나 0 보다 많게
         {
             if (critical <= player.Critical)
             {
-                CurrentEnemies[select - 1].HP = (player.Attack * 160) / 100; // 크리티컬
+                CurrentEnemies[select - 1].HP -= (player.Attack * 160) / 100; // 크리티컬
                 Console.WriteLine("크리티컬!");
             }
             else
@@ -110,7 +112,7 @@ public class BattleScene : SceneLoader
     {
         foreach(var attack in CurrentEnemies) // 
         {
-            Random random = new Random();
+            
             int dotge = random.Next(0, 101);
             if(player.Dodge >= dotge)
             {
@@ -118,7 +120,10 @@ public class BattleScene : SceneLoader
             }
             else
             {
-               player.HP -= attack.Attack;
+               if(attack.HP > 0)
+                {
+                    player.HP -= attack.Attack;
+                }
             }
         }
         Console.WriteLine($"현재 체력 : {player.HP}");

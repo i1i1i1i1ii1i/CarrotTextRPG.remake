@@ -17,4 +17,9 @@ public class Enemy
 
     public Enemy (string name, int hp, int attack)
     {  Name = name; HP = hp; Attack = attack; }
+
+    public Enemy Clone()
+    {
+        return this.MemberwiseClone() as Enemy;
+    }
 }
