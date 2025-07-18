@@ -25,6 +25,35 @@ public class Player
         } 
     }
 
+    public int AttackBoosted
+    {
+        get
+        {
+            int value = 0;
+
+            foreach (var item in Inventory)
+            {
+                if (item.Equipped && item.Type == "°ø°Ý") value += item.BuffValue;
+            }
+            return Attack + value;
+        }
+    }
+
+    public int ArmorBoosted
+    {
+        get
+        {
+            int value = 0;
+
+            foreach (var item in Inventory)
+            {
+                if (item.Equipped && item.Type == "¹æ¾î") value += item.BuffValue;
+
+            }
+            return Armor + value;
+        }
+    }
+
     public void GainExp(float expAmount) // °æÇèÄ¡ È¹µæ
     {
         Exp += expAmount;

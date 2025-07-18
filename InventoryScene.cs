@@ -80,25 +80,27 @@ namespace CarrotTextRPG
 
                 if (int.TryParse(input, out int idx) && idx >= 1 && idx <= items.Count)
                 {
-                    Item item = items[idx - 1];
 
-                    if (item.Equipped)
-                    {
-                        item.Equipped = false;
+                    items[idx - 1].Equipped = !items[idx - 1].Equipped;
+                    //Item item = items[idx - 1];
 
-                        if (item.Type == "공격") GameManager.Instance.Player.Attack -= item.BuffValue;
+                    //if (item.Equipped)
+                    //{
+                    //    item.Equipped = false;
 
-                        else if (item.Type == "방어") GameManager.Instance.Player.Armor -= item.BuffValue;
-                    }
+                    //    if (item.Type == "공격") GameManager.Instance.Player.Attack -= item.BuffValue;
 
-                    else
-                    {
-                        item.Equipped = true;
+                    //    else if (item.Type == "방어") GameManager.Instance.Player.Armor -= item.BuffValue;
+                    //}
 
-                        if (item.Type == "공격") GameManager.Instance.Player.Attack += item.BuffValue;
+                    //else
+                    //{
+                    //    item.Equipped = true;
 
-                        else if (item.Type == "방어") GameManager.Instance.Player.Armor += item.BuffValue;
-                    }
+                    //    if (item.Type == "공격") GameManager.Instance.Player.Attack += item.BuffValue;
+
+                    //    else if (item.Type == "방어") GameManager.Instance.Player.Armor += item.BuffValue;
+                    //}
                 }
 
                 else
