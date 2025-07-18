@@ -34,22 +34,18 @@ public class GameManager
             Attack = 10,
             Armor = 5,
             Gold = 1500,
-
-
-            Inventory = new List<Item>()
-     
+            Inventory = new List<Item>(),
             Critical = 15,
             Dodge = 10,
-            
         };
         Items = new List<Item>();
     }
 
-    public void AddItem(string name, string type, int buffValue, int itemNumber) // 아이템 추가
-    {
-        var item = new Item(name, type, buffValue, itemNumber);
-        Items.Add(item);
-    }
+    //public void AddItem(string name, string type, int buffValue, int itemNumber) // 아이템 추가
+    //{
+    //    var item = new Item(name, type, buffValue, itemNumber);
+    //    Items.Add(item);
+    //}
 
     public void AddEnemy(string name, int hp, int attack) // 적 추가
     {
