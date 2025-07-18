@@ -25,8 +25,8 @@ public class Item
 
     public string GetStatText() 
     {
-        if (Attack > 0) return $"°ø°Ý·Â +{Attack}";
-        else if (Armor > 0) return $"¹æ¾î·Â +{Armor}";
-        else return "´É·ÂÄ¡ ¾øÀ½";
+        if (Attack > 0) return $"공격력 +{Attack}";
+        else if (Armor > 0) return $"방어력 +{Armor}";
+        else return "능력치 없음";
     }
 }

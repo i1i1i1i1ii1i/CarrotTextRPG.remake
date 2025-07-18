@@ -10,16 +10,7 @@ namespace CarrotTextRPG
 
         public override void LoadScene()
         {
-            shopItems.Add(new Item("수련자 갑옷", 0, 5, "수련에 도움을 주는 갑옷입니다.", 1000));
-            shopItems.Add(new Item("무쇠갑옷", 0, 9, "무쇠로 만들어져 튼튼한 갑옷입니다.", 1200));
-            shopItems.Add(new Item("스파르타의 갑옷", 0, 15, "전설의 갑옷입니다.", 3500));
-            shopItems.Add(new Item("개발자 셔츠", 0, 9999, "집에 가지 못한 개발자의 땀내나는 셔츠입니다.", 99999));
-            shopItems.Add(new Item("낡은 검", 2, 0, "쉽게 볼 수 있는 낡은 검입니다.", 600));
-            shopItems.Add(new Item("청동 도끼", 5, 0, "어디선가 사용됐던 도끼입니다.", 1500));
-            shopItems.Add(new Item("스파르타의 창", 7, 0, "전설의 창입니다.", 3000));
-            shopItems.Add(new Item("개발자의 무기", 9999, 0, "개발자만이 사용할 수 있는 금지된 무기입니다.", 99999));
-            
-            while (true)
+            while (true) // 상점 메인 페이지 입니다. while 반복문을 통해 리스트로 아이템을 출력하고 "구매" "판매"를 선택할 수 있습니다.
             {
                 Console.Clear();
                 Console.WriteLine("상점");
@@ -29,7 +20,7 @@ namespace CarrotTextRPG
                 Console.WriteLine("[아이템 목록]");
                 for (int i = 0; i < shopItems.Count; i++)
                 {
-                    var item = shopItems[i];
+                    var item = shopItems[i]; //shopItem[i]번째의 변수를 item
                     Console.WriteLine($"- {i + 1} {item.Name} | {item.GetStatText()} | {item.Description} | {(item.Purchased ? "구매완료" : item.Price + " G")}");
                 }
 
@@ -56,27 +47,28 @@ namespace CarrotTextRPG
             Console.WriteLine("[아이템 목록]");
             for (int i = 0; i < shopItems.Count; i++)
             {
-                var item = shopItems[i];
-                Console.WriteLine($"- {i + 1} {item.Name} | {item.GetStatText()} | {item.Description} | {(item.Purchased ? "구매완료" : item.Price + " G")}");
+                var item = shopItems[i]; // i번째 아이템을 item 변수로 가져옵니다.
+                Console.WriteLine($"- {i + 1} {item.Name} | {item.GetStatText()} | {item.Description} | {(item.Purchased ? "구매완료" : item.Price + " G")}"); 
+                // Item.Name과 GetStatText()는 공격력,방어력값이 각각 저장되어 있는데 예를 들어 방어 아이템이면 공격력은 0, 방어력은 0보다 큰 숫자를 통해 얼마큼 올랐는지 return값을 받습니다.
             }
             Console.WriteLine("0. 나가기\n>> ");
             Console.Write("구매할 아이템 번호를 입력하세요: ");
             string input = Console.ReadLine();
 
             if (input == "0") return;
-            if (int.TryParse(input, out int idx) && idx >= 1 && idx <= shopItems.Count)
+            if (int.TryParse(input, out int idx) && idx >= 1 && idx <= shopItems.Count)// TryParse 문으로 string 값을 int값으로 변환시킨 다음 아이템 리스트에 1부터 n번까지의 리스트를 출력합니다.
             {
-                var item = shopItems[idx - 1];
+                var item = shopItems[idx - 1]; //idx-1을 하는 이유는 리스트의 첫 번째 값이 0부터 시작하기 때문입니다. 받는 값이 예를 들어 1. 아이템[1] 이런 식이면 리스트에서는 [0]번째.
                 if (item.Purchased)
                 {
                     Console.WriteLine("이미 구매한 아이템입니다.");
                 }
-                else if (GameManager.Instance.Player.Gold >= item.Price)
+                else if (GameManager.Instance.Player.Gold >= item.Price) //필요 골드보다 플레이어의 골드가 크면 아이템 구매할 수 있습니다.
                 {
                     GameManager.Instance.Player.Gold -= item.Price;
                     item.Purchased = true;
                     GameManager.Instance.Player.Inventory.Add(new Item(item.Name, item.Attack, item.Armor, item.Description, item.Price, true));
-                    Console.WriteLine("구매를 완료했습니다.");
+                    Console.WriteLine("구매를 완료했습니다."); //인벤토리 리스트 안에 구매한 아이템 변수를 집어넣습니다.
                 }
                 else
                 {
@@ -98,11 +90,11 @@ namespace CarrotTextRPG
             Console.WriteLine("필요한 아이템을 얻을 수 있는 상점입니다.\n");
             Console.WriteLine($"[보유 골드] {GameManager.Instance.Player.Gold} G\n");
 
-            var inventory = GameManager.Instance.Player.Inventory;
+            var inventory = GameManager.Instance.Player.Inventory; //인벤토리에 저장된 아이템을 inventory 변수에 넣습니다.
 
             if (inventory.Count == 0)
             {
-                Console.WriteLine("판매할 아이템이 없습니다.\n");
+                Console.WriteLine("판매할 아이템이 없습니다.\n"); //아이템을 구매하지 않았거나 판매했으면 출력됩니다.
                 Console.Write("0. 나가기\n>> ");
                 Console.ReadLine();
                 return;
@@ -111,9 +103,9 @@ namespace CarrotTextRPG
             Console.WriteLine("[아이템 목록]");
             for (int i = 0; i < inventory.Count; i++)
             {
-                var item = inventory[i];
-                Console.Write($"- {i + 1}. ");
-                if (item.Equipped) Console.Write("[E]");
+                var item = inventory[i]; //93번에서 생성한 i 번째의 inventory의 값을 또 다시 item에 넣습니다.
+                Console.Write($"- {i + 1}. "); // 몇 번째 item인지 출력
+                if (item.Equipped) Console.Write("[E]"); //장착된 아이템이면 [E]를 출력합니다.
                 Console.WriteLine($"{item.Name} | {item.GetStatText()} | {item.Description}");
             }
 
@@ -130,20 +122,24 @@ namespace CarrotTextRPG
                 return;
             }
 
-            var selectedItem = inventory[choice - 1];
+            var selectedItem = inventory[choice - 1]; //입력받은 input값을 choice로 변환한 뒤 choice-1번째 해당하는 인벤토리 아이템을 selectedItem 변수에 넣습니다.
 
             if (selectedItem.Equipped)
             {
-                Console.WriteLine("\n장착 중인 아이템은 판매할 수 없습니다.");
+                Console.WriteLine("\n장착 중인 아이템은 판매할 수 없습니다."); //장착된 아이템을 판매할 수 없음
                 Console.WriteLine("계속하려면 Enter를 누르세요...");
                 Console.ReadLine();
                 return;
             }
 
-            int sellPrice = (int)(selectedItem.Price * 0.85);
+            int sellPrice = (int)(selectedItem.Price * 0.85); //구매한 아이템을 판매하면 원가 * 0.85 값으로 재판매 가능
             GameManager.Instance.Player.Gold += sellPrice;
             inventory.RemoveAt(choice - 1);
-
+            var shopItem = shopItems.Find(x => x.Name == selectedItem.Name); //"구매완료" 였던 아이템을 다시 false값으로 재설정
+            if (shopItem != null)
+            {
+                shopItem.Purchased = false; //이로써 "구매완료"가 True 였던 값이 false로 바뀌어 다시 구매 가능합니다.
+            }
             Console.WriteLine($"\n{selectedItem.Name}을(를) {sellPrice} G에 판매했습니다.");
             Console.WriteLine("계속하려면 Enter를 누르세요...");
             Console.ReadLine();

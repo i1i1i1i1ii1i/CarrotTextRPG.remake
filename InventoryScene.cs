@@ -28,7 +28,7 @@ namespace CarrotTextRPG
                 {
                     Console.WriteLine("[아이템 목록]");
                     int index = 1;
-                    foreach (var item in items)
+                    foreach (var item in items) //GameManager에 있는 Inventory 리스트 값을 가져온다.
                     {
                         Console.Write("- {0} ", index++);
                         if (item.Equipped) Console.Write("[E]");
