@@ -6,9 +6,10 @@ namespace carrotTextRPG;
 
 public class GameManager
 {
-    private static GameManager instance; // °ÔÀÓ ¸Å´ÏÀú ½Ì±ÛÅæ
-    public List<Item> Items { get; private set; } = new List<Item>(); // ¾ÆÀÌÅÛÀ» ´ãÀ» ¸®½ºÆ®
-    public List<Enemy> Enemies { get; private set; } = new List<Enemy>(); //Àû ´ãÀ» ¸®½ºÆ®
+
+    private static GameManager instance;
+    public List<Enemy> Enemies { get; private set; } = new List<Enemy>();
+
 
     public static GameManager Instance
     {
@@ -20,11 +21,11 @@ public class GameManager
         }
     }
 
-    public Player Player { get; private set; }
-    //public List<Enemy> Enemies { get; private set; }
-    //public List<Item> Items { get; private set; }
 
-    public void GeneratePlayer(string name) // ÇÃ·¹ÀÌ¾î »ı¼º
+    public Player Player { get;  set; }
+    public List<Item> Items { get; private set; }
+    public void GeneratePlayer(string name)
+
     {
         Player = new Player()
         {
@@ -41,13 +42,15 @@ public class GameManager
         Items = new List<Item>();
     }
 
-    //public void AddItem(string name, string type, int buffValue, int itemNumber) // ¾ÆÀÌÅÛ Ãß°¡
+
+    //public void AddItem(string name, int attack, int armor, string description, int price, bool purchased = false)
     //{
-    //    var item = new Item(name, type, buffValue, itemNumber);
+    //    var item = new Items();
+
     //    Items.Add(item);
     //}
 
-    public void AddEnemy(string name, int hp, int attack) // Àû Ãß°¡
+    public void AddEnemy(string name, int hp, int attack) // ì  ì¶”ê°€
     {
         var enemy = new Enemy(name, hp, attack);
         Enemies.Add(enemy);
