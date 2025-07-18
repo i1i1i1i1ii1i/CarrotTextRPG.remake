@@ -1,0 +1,10 @@
+{
+  "Name": "test1",
+  "Level": 1,
+  "Class": null,
+  "Attack": 10,
+  "HP": 100,
+  "Armor": 5,
+  "Gold": 1500,
+  "Inventory": []
+}

@@ -18,7 +18,7 @@ public class GameManager
         }
     }
 
-    public Player Player { get; private set; }
+    public Player Player { get;  set; }
     public List<Enemy> Enemies { get; private set; }
     public List<Item> Items { get; private set; }
 
