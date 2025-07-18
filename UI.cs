@@ -13,6 +13,7 @@ namespace carrotTextRPG
             Console.WriteLine("`------'`----'  `---' `--`--'|  |-'  `----'    `--'`----' `--' `--`--'`--''--' `---'  ");
             Console.ReadKey();
         }
+
         public static void StartScript()
         {
             Console.Clear();
@@ -32,6 +33,7 @@ namespace carrotTextRPG
             Thread.Sleep(500);
             Console.ReadKey();
         }
+
         public static void CreatCharacter()
         {
             Console.Clear();
@@ -123,6 +125,7 @@ namespace carrotTextRPG
             Thread.Sleep(1000);
             Console.ReadKey();
         }
+
         public static void ShowInventory()
         {
             Console.Clear();
@@ -134,6 +137,7 @@ namespace carrotTextRPG
             //    Thread.Sleep(500);
             //}
         }
+
         public static void ShowHelp()
         {
             Console.Clear();
@@ -157,6 +161,7 @@ namespace carrotTextRPG
             Console.Clear();
 
         }
+
         private static void WriteCentered(string text) // 텍스트 가운데 정렬
         {
             int width = Console.WindowWidth;

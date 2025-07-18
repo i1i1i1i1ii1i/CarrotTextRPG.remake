@@ -9,6 +9,7 @@ namespace CarrotTextRPG
     class InventoryScene : SceneLoader
     {
         List<Item> items = GameManager.Instance.Player.Inventory;
+
         public override void LoadScene()
         {
             //여기는 처음 인벤토리 상태가 보이는 메서드입니다. 아이템이 출력됩니다.   
@@ -22,6 +23,7 @@ namespace CarrotTextRPG
                 {
                     Console.WriteLine("아이템이 없습니다.\n");
                 }
+
                 else
                 {
                     Console.WriteLine("[아이템 목록]");
@@ -40,10 +42,12 @@ namespace CarrotTextRPG
                 string input = Console.ReadLine();
 
                 if (input == "0") break;
+
                 else if (input == "1") ManageEquip();
             }
             Console.Clear();
         }
+
         void ManageEquip() //아이템을 장착하는 메서드입니다. 아이템 클래스에서 갖고 온 리스트를 통해
                            // 던전에서 가져온 아이템을 수정할 수 있습니다.
         {
@@ -52,6 +56,7 @@ namespace CarrotTextRPG
                 Console.Clear();
                 Console.WriteLine("인벤토리 - 장착 관리");
                 Console.WriteLine("보유 중인 아이템을 관리할 수 있습니다.\n");
+
                 if (items.Count == 0)
                 {
                     Console.WriteLine("아이템이 없습니다.\n");
@@ -60,6 +65,7 @@ namespace CarrotTextRPG
                     return;
                 }
                 Console.WriteLine("[아이템 목록]");
+
                 for (int i = 0; i < items.Count; i++)
                 {
                     Console.Write("- {0} ", i + 1);
@@ -71,10 +77,12 @@ namespace CarrotTextRPG
                 string input = Console.ReadLine();
 
                 if (input == "0") break;
+
                 if (int.TryParse(input, out int idx) && idx >= 1 && idx <= items.Count)
                 {
                  //   items[idx - 1].Equipped = !items[idx - 1].Equipped;
                 }
+
                 else
                 {
                     Console.WriteLine("잘못된 입력입니다. 엔터를 누르세요.");

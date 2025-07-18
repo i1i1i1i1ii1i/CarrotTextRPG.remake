@@ -8,10 +8,10 @@ public class Enemy
     public int HP { get; set; }
     public int Attack { get; set; }
 
-    public Enemy (string name, int hp, int attack)
-    {  Name = name; HP = hp; Attack = attack; }
+    public Enemy (string name, int hp, int attack) // Enemy »ı¼ºÀÚ 
+    {  Name = name; HP = hp; Attack = attack; } 
 
-    public Enemy Clone()
+    public Enemy Clone() // Enemy Clone
     {
         return this.MemberwiseClone() as Enemy;
     }

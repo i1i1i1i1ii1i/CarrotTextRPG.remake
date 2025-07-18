@@ -17,15 +17,15 @@ public class Player
     public int Dodge { get; set; }
     public List<Item> Inventory { get; set; }
 
-    public float MaxExp
+    public float MaxExp // 최대 경험치 설정
     { 
         get
         {
-            return 100 + (Level - 1.1);
+            return 100 + (Level - 1.1f);
         } 
     }
 
-    public void GainExp(float expAmount)
+    public void GainExp(float expAmount) // 경험치 획득
     {
         Exp += expAmount;
 
@@ -36,7 +36,7 @@ public class Player
         }
     }
 
-    private void LevelUp()
+    private void LevelUp() // 레벨업
     {
         Level++;
         

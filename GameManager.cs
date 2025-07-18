@@ -6,12 +6,12 @@ namespace carrotTextRPG;
 
 public class GameManager
 {
-
     private static GameManager instance;
-    public List<Enemy> Enemies { get; private set; } = new List<Enemy>();
+    public Player Player { get; set; }
+    public List<Enemy> Enemies { get; private set; } = new List<Enemy>(); // Enemies 담을 리스트 형태의 그릇
+    public List<Item> Items { get; private set; } = new List<Item>();// 아이템
 
-
-    public static GameManager Instance
+    public static GameManager Instance // 게임 매니저 싱글톤
     {
         get
         {
@@ -20,11 +20,8 @@ public class GameManager
             return instance;
         }
     }
-    
-    public Player Player { get;  set; }
-    public List<Item> Items { get; private set; }
-    public void GeneratePlayer(string name)
 
+    public void GeneratePlayer(string name) // 플레이어 생성 함수; 파라미터는 MainMenuScene 에서 유저한테 입력 받아온 값
     {
         Player = new Player()
         {
@@ -40,10 +37,9 @@ public class GameManager
             Critical = 15,
             Dodge = 10,
         };
-        Items = new List<Item>();
     }
 
-    public void AddEnemy(string name, int hp, int attack) // 적 추가
+    public void AddEnemy(string name, int hp, int attack) // 적 추가 함수
     {
         var enemy = new Enemy(name, hp, attack);
         Enemies.Add(enemy);

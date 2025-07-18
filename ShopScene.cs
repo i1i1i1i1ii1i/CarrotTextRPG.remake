@@ -4,10 +4,10 @@ using System.Numerics;
 
 namespace CarrotTextRPG
 {
-    
     public class ShopScene : SceneLoader
     {
         List<Item> shopItems = GameManager.Instance.Items;
+
         public override void LoadScene()
         {
             shopItems.Add(new Item("수련자 갑옷", 0, 5, "수련에 도움을 주는 갑옷입니다.", 1000));
@@ -45,6 +45,7 @@ namespace CarrotTextRPG
             }
             Console.Clear();
         }
+
         void BuyItem() //아이템을 사서 인벤토리에 저장하는 메서드입니다.
         {
             Console.Clear();
@@ -89,6 +90,7 @@ namespace CarrotTextRPG
             Console.WriteLine("엔터를 누르면 돌아갑니다.");
             Console.ReadLine();
         }
+
         void SellItem() //BuyItem()메서드를 통해 구매한 아이템을 파는 메서드입니다. 인벤토리와 연결되어 있습니다.
         {
             Console.Clear();

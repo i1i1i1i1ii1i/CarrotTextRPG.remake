@@ -11,7 +11,8 @@ public class Item
     public int Price { get; set; }
     public bool Purchased { get; set; }
     public bool Equipped { get; set; }
-    public Item(string name, int attack, int armor, string description, int price, bool purchased = false)
+
+    public Item(string name, int attack, int armor, string description, int price, bool purchased = false) // 아이템 생성자
     {
         Name = name;
         Attack = attack;
@@ -21,7 +22,8 @@ public class Item
         Purchased = purchased;
         Equipped = false;
     }
-    public string GetStatText()
+
+    public string GetStatText() 
     {
         if (Attack > 0) return $"°ø°Ý·Â +{Attack}";
         else if (Armor > 0) return $"¹æ¾î·Â +{Armor}";
