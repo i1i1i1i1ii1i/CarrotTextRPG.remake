@@ -72,7 +72,7 @@ namespace CarrotTextRPG
                     if (items[i].Equipped) Console.Write("[E]");
                     Console.WriteLine($"{items[i].Name} | {items[i].GetStatText()} | {items[i].Description}");
                 }
-                Console.WriteLine("0. 나가기\n>> ");
+                Console.WriteLine("\n0. 나가기\n>> ");
                 Console.Write("원하시는 행동을 입력해주세요.\n>> ");
                 string input = Console.ReadLine();
 

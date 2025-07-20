@@ -6,6 +6,7 @@ namespace carrotTextRPG;
 
 public class GameManager
 {
+    public int dungeonCycle { get; set; }
     private static GameManager instance;
     public Player Player { get; set; }
     public List<Enemy> Enemies { get; private set; } = new List<Enemy>(); // Enemies 담을 리스트 형태의 그릇
@@ -33,7 +34,7 @@ public class GameManager
             MaxHP = 100,
             Attack = 10,
             Armor = 5,
-            Gold = 1500,
+            Gold = 100000000,
             Inventory = new List<Item>(),
             Critical = 15,
             Dodge = 10,

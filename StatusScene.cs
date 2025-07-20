@@ -31,13 +31,15 @@ public class StatusScene : SceneLoader
             Thread.Sleep(150);
             Console.WriteLine($"직  업 : {GameManager.Instance.Player.Class}"); 
             Thread.Sleep(150);
-            Console.WriteLine($"레  벨 : {GameManager.Instance.Player.Level}"); 
+            Console.WriteLine($"레  벨 : {GameManager.Instance.Player.Level}");
+            Thread.Sleep(150);
+            Console.WriteLine($"경험치 : {GameManager.Instance.Player.Exp}/{GameManager.Instance.Player.MaxExp}");
             Thread.Sleep(150);
             Console.WriteLine($"체  력 : {GameManager.Instance.Player.HP}"); 
             Thread.Sleep(150);
-            Console.WriteLine($"공격력 : {GameManager.Instance.Player.Attack + bonusAtk} {(bonusAtk > 0 ? $"(+{bonusAtk})" : "")}"); 
+            Console.WriteLine($"공격력 : {GameManager.Instance.Player.Attack} {(bonusAtk > 0 ? $"(+{bonusAtk})" : "")}"); 
             Thread.Sleep(150);
-            Console.WriteLine($"방어력 : {GameManager.Instance.Player.Armor + bonusDef} {(bonusDef > 0 ? $"(+{bonusDef})" : "")}"); 
+            Console.WriteLine($"방어력 : {GameManager.Instance.Player.Armor} {(bonusDef > 0 ? $"(+{bonusDef})" : "")}"); 
             Thread.Sleep(150);
             Console.WriteLine($"소지금 : {GameManager.Instance.Player.Gold} G");
             Thread.Sleep(500);
