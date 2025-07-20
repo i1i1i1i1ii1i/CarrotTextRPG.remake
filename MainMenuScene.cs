@@ -5,8 +5,6 @@ namespace carrotTextRPG;
 
 public class MainMenuScene : SceneLoader
 {
-<<<<<<< Updated upstream
-=======
     static int x = Console.WindowWidth, y = Console.WindowHeight; // 콘솔 사이즈
 
     public MainMenuScene()
@@ -16,7 +14,6 @@ public class MainMenuScene : SceneLoader
         GameManager.Instance.AddEnemy("외계생명체", 30, 4, 10);
         GameManager.Instance.AddEnemy("돌", 20, 1, 5);
     }
->>>>>>> Stashed changes
     public override void LoadScene()
     {
         Console.Clear();
@@ -82,20 +79,14 @@ public class MainMenuScene : SceneLoader
         {  
             Console.CursorVisible = false;
             Console.Clear();
-
-<<<<<<< Updated upstream
             Console.WriteLine("이제 전투를 시작할 수 있습니다.\n\n0. 종료 \n1. 상태 보기\n2. 전투 시작\n3. 상점\n\n원하시는 행동을 입력해주세요.\n>>");
 
             
             Console.Write("\n원하시는 행동을 입력해주세요.\n >>");
-
-            string input = Console.ReadLine();
-
-            if (!int.TryParse(input, out int inputInt))
-=======
             Console.SetCursorPosition(0, y / 2);
             for(int i=0; i< columns; i++)
->>>>>>> Stashed changes
+            Console.SetCursorPosition(0, y / 2);
+            for(int i=0; i< columns; i++)
             {
                 int spc = leftmargin + spacing * (i+1); // 각 컬럼 사이의 간격
                 Console.SetCursorPosition(spc, y / 2);
@@ -116,11 +107,7 @@ public class MainMenuScene : SceneLoader
                 case ConsoleKey.D:
                     choice = Math.Clamp(choice + 1, 1, columns);
                     break;
-<<<<<<< Updated upstream
-                case 2:
-                    new BattleScene().LoadScene();
-                    break;
-                default:
+                case Consolekey.spacebar:
                     ShowErrorMsg();
                     break;
             }
@@ -177,7 +164,6 @@ public class MainMenuScene : SceneLoader
                     }
                     break;
             }
->>>>>>> Stashed changes
         }
     }
         

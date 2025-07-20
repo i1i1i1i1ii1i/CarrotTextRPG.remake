@@ -5,6 +5,30 @@ namespace carrotTextRPG;
 public class Item
 {
     public string Name { get; set; }
+    public int Attack { get; set; }
+    public int Armor { get; set; }
     public string Type { get; set; }
-    public int BuffValue { get; set; } // ¾ÆÀÌÅÛÀÌ ÁÖ´Â È¿°ú
+    public string Description { get; set; }
+    public int Price { get; set; }
+    public bool Purchased { get; set; }
+    public bool Equipped { get; set; }
+
+    public Item(string name, int attack, int armor, string type, string description, int price, bool purchased = false) // ì•„ì´í…œ ìƒì„±ì
+    {
+        Name = name;
+        Attack = attack;
+        Armor = armor;
+        Type = type;
+        Description = description;
+        Price = price;
+        Purchased = purchased;
+        Equipped = false;
+    }
+
+    public string GetStatText() 
+    {
+        if (Attack > 0) return $"ê³µê²©ë ¥ +{Attack}";
+        else if (Armor > 0) return $"ë°©ì–´ë ¥ +{Armor}";
+        else return "ëŠ¥ë ¥ì¹˜ ì—†ìŒ";
+    }
 }
