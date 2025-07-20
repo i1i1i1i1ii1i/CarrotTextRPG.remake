@@ -6,7 +6,7 @@ namespace carrotTextRPG;
 public class StatusScene : SceneLoader
 {
     
-    public override void LoadScene(
+    public override void LoadScene()
     { //플레이어의 상태창을 보는 메서드입니다. 인벤토리에 장착된 아이템 능력치가 올린 것 또한 확인 가능합니다.
         while (true)
         {

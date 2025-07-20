@@ -11,6 +11,7 @@ public class Player
     public string Class { get; set; }
     public int Attack { get; set; }
     public int HP { get; set; }
+    public int MaxHP { get; set; }
     public int Armor { get; set; }
     public int Gold { get; set; }
     public int Critical { get; set; }
@@ -71,22 +72,33 @@ public class Player
         
         switch (Class)
         {
+            case "표류자" : 
+                MaxHP += 5;
+                HP = MaxHP;
+                Attack += 2;
+                Armor += 2;
+                Critical += 1;
+                Dodge += 1;
+                break;
             case "전사" : 
-                HP += 10;
+                MaxHP += 10;
+                HP = MaxHP;
                 Attack += 5;
                 Armor += 5;
                 Critical += 1;
                 Dodge += 1;
                 break;
             case "궁수" : 
-                HP += 5;
+                MaxHP += 5;
+                HP = MaxHP;
                 Attack += 5;
                 Armor += 1;
                 Critical += 5;
                 Dodge += 10;
                 break;
             case "마법사" : 
-                HP += 1;
+                MaxHP += 1;
+                HP = MaxHP;
                 Attack += 20;
                 Armor += 1;
                 Critical += 1;

@@ -6,15 +6,28 @@ namespace carrotTextRPG;
 public class MainMenuScene : SceneLoader
 {
     static int x = Console.WindowWidth, y = Console.WindowHeight; // 콘솔 사이즈
+    //string saveFile=SaveScene.FilePath; // 상대경로 (동일하게 맞춤)
 
     public MainMenuScene()
     {
-        GameManager.Instance.AddEnemy("사람", 50, 5,20);
-        GameManager.Instance.AddEnemy("괴물", 40, 3,15);
-        GameManager.Instance.AddEnemy("외계생명체", 30, 4, 10);
-        GameManager.Instance.AddEnemy("돌", 20, 1, 5);
+        GameManager.Instance.AddEnemy(false,"사람", 50, 5,20,30);
+        GameManager.Instance.AddEnemy(false,"괴물", 40, 3,15,50);
+        GameManager.Instance.AddEnemy(false, "외계생명체", 30, 4, 10,100);
+        GameManager.Instance.AddEnemy(false, "돌", 20, 1, 5,5);
     }
     public override void LoadScene()
+    {
+        Console.Clear();
+        PrologueScene();
+        Console.ReadKey();
+        Console.Clear();
+        CreatPlayer();
+        Console.ReadKey();
+        Console.Clear();
+        MainMenu();
+    }
+        
+    public void PrologueScene()
     {
         Console.Clear();
         Console.WriteLine("\n따가운 햇살이 눈꺼풀 사이로 파고든다.");
@@ -31,13 +44,29 @@ public class MainMenuScene : SceneLoader
         Thread.Sleep(300);
         Console.WriteLine("어째서 이 외딴 섬에 홀로 있는 것인가?");
         Thread.Sleep(300);
-        Console.ReadKey();
-        Console.Clear();
+    }
+
+    public void CreatPlayer()
+    {
+
         Console.WriteLine("\n품 안에서 날카로운 것에 긁히는 기분이 들어 옷 속을 살펴보니");
         Thread.Sleep(300);
-        Console.WriteLine("짧은 날붙이 하나와 가죽으로 둘러싸여 있는 책이 한권 나왔다.");
+        Console.Write("짧은 날붙이 하나와 가죽으로 둘러싸여 있는 ");
+        Console.BackgroundColor = ConsoleColor.White;
+        Console.ForegroundColor = ConsoleColor.Black;
+        Console.Write("책");
+        Console.BackgroundColor = ConsoleColor.Black;
+        Console.ForegroundColor = ConsoleColor.White;
+        Console.WriteLine("이 한권 나왔다.");
         Thread.Sleep(300);
-        Console.Write("갈색 가죽으로 덮인 책의 오른쪽 구석에 검은색 잉크로 ");
+        Console.BackgroundColor = ConsoleColor.White;
+        Console.ForegroundColor = ConsoleColor.Black;
+        Console.Write("책");
+        Console.BackgroundColor = ConsoleColor.Black;
+        Console.ForegroundColor = ConsoleColor.White;
+        Console.Write("을 펼쳐볼까?");
+        Console.ReadKey();
+        Console.Write("\n갈색 가죽으로 덮인 책의 오른쪽 구석에 검은색 잉크로 ");
         Console.BackgroundColor = ConsoleColor.White;
         Console.ForegroundColor = ConsoleColor.Black;
         Console.Write("무언가");
@@ -64,37 +93,33 @@ public class MainMenuScene : SceneLoader
         Console.WriteLine("무슨 의미인지는 모르겠지만");
         Thread.Sleep(500);
         Console.WriteLine("뭔가 입에 익은 느낌이 든다");
-        Console.ReadKey();
-        Console.Clear();
- 
+    }
+
+    public void MainMenu()
+    {
         bool isRunning = true;
-        string[] scene = { "상  태", "전  투", "상  점", "종 료"};
+        string[] scene = { "상  태", "전  투", "상  점","휴 식", "종 료" };
         int choice = 1;
         int leftmargin = -3;
         int columns = scene.Length; // 4
         int columnWidth = x / (columns); // 25
-        int spacing = x/(columns + 1); // 20
+        int spacing = x / (columns + 1); // 20
+        Console.BackgroundColor = ConsoleColor.Black;
 
         while (isRunning)
-        {  
+        {
             Console.CursorVisible = false;
             Console.Clear();
-            Console.WriteLine("이제 전투를 시작할 수 있습니다.\n\n0. 종료 \n1. 상태 보기\n2. 전투 시작\n3. 상점\n\n원하시는 행동을 입력해주세요.\n>>");
-
-            
-            Console.Write("\n원하시는 행동을 입력해주세요.\n >>");
             Console.SetCursorPosition(0, y / 2);
-            for(int i=0; i< columns; i++)
-            Console.SetCursorPosition(0, y / 2);
-            for(int i=0; i< columns; i++)
+            for (int i = 0; i < columns; i++)
             {
-                int spc = leftmargin + spacing * (i+1); // 각 컬럼 사이의 간격
+                int spc = leftmargin + spacing * (i + 1); // 각 컬럼 사이의 간격
                 Console.SetCursorPosition(spc, y / 2);
-                Console.Write(scene[i]); 
+                Console.Write(scene[i]);
             }
 
-            int idx = choice-1;
-            int baseX = leftmargin + spacing * (idx + 1) - 2; // 0 * 25 + 25 / 2
+            int idx = choice - 1;
+            int baseX = leftmargin + spacing * (idx + 1) - 2;
             Console.SetCursorPosition(baseX, y / 2);
             Console.Write("▶");
 
@@ -107,45 +132,6 @@ public class MainMenuScene : SceneLoader
                 case ConsoleKey.D:
                     choice = Math.Clamp(choice + 1, 1, columns);
                     break;
-                case Consolekey.spacebar:
-                    ShowErrorMsg();
-                    break;
-            }
-            //if (int.TryParse(input, out inputInt) == false)
-            //{
-            //    ShowErrorMsg();
-            //    continue;
-            //}
-
-
-            // else if (inputInt == 2)
-            // {
-            //     SceneLoader battleScene = new BattleScene();
-            //     battleScene.LoadScene();
-            // }
-            // else if (inputInt == 3)
-            // {
-            //     SceneLoader shopscene = new ShopScene();
-            //     shopscene.LoadScene();
-            // }
-            // else ShowErrorMsg();
-
-            //if (inputInt == 0) return;
-
-            //else if (inputInt == 1)
-            //{
-            //    SceneLoader statusScene = new StatusScene();
-            //    statusScene.LoadScene();
-            //}
-
-            //else if (inputInt == 2)
-            //{
-            //    SceneLoader battleScene = new BattleScene();
-            //    battleScene.LoadScene();
-            //}
-            //else ShowErrorMsg();
-
-=======
                 case ConsoleKey.Spacebar:
                     switch (choice)
                     {
@@ -153,12 +139,35 @@ public class MainMenuScene : SceneLoader
                             new StatusScene().LoadScene();
                             break;
                         case 2:
-                            new BattleScene(GameManager.Instance.Player).LoadScene();
+                            if (GameManager.Instance.Player.HP > 0) { new BattleScene(GameManager.Instance.Player).LoadScene(); }
+                            else { Console.SetCursorPosition(x/2-9,y/3); Console.Write("체력이 부족합니다."); Console.ReadKey(); MainMenu(); }
                             break;
                         case 3:
                             new ShopScene().LoadScene();
                             break;
                         case 4:
+                            if (GameManager.Instance.Player.Gold < 300)
+                            {
+                                Console.SetCursorPosition(x / 2-10, y / 3);
+                                Console.WriteLine("소지금이 부족합니다");
+                                Console.ReadKey();
+                            } 
+                            else if (GameManager.Instance.Player.HP == GameManager.Instance.Player.MaxHP)
+                            {
+                                Console.SetCursorPosition(x / 2-13, y / 3);
+                                Console.WriteLine("체력이 이미 가득 찼습니다.");
+                                Console.ReadKey();
+                            }
+                            else
+                            {
+                                Console.SetCursorPosition(x / 2-8, y / 3);
+                                Console.WriteLine("휴식을 취합니다.");
+                                GameManager.Instance.Player.Gold -= 300;
+                                GameManager.Instance.Player.HP = GameManager.Instance.Player.MaxHP;
+                                Console.ReadKey();
+                            }
+                            break;
+                        case 5:
                             new SaveScene().LoadScene();
                             break;
                     }
@@ -166,8 +175,8 @@ public class MainMenuScene : SceneLoader
             }
         }
     }
-        
-    
+
+
 
     private void ShowErrorMsg()
     {

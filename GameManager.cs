@@ -28,8 +28,9 @@ public class GameManager
             Name = name,
             Level = 1,
             Exp = 0,
-            Class = "",
+            Class = "표류자",
             HP = 100,
+            MaxHP = 100,
             Attack = 10,
             Armor = 5,
             Gold = 1500,
@@ -44,9 +45,9 @@ public class GameManager
         var item = new Item(name, attack, armor, type, description, price, purchased);
         Items.Add(item);
     }
-    public void AddEnemy(string name, int hp, int attack, int exp) // 적 추가
+    public void AddEnemy(bool indigator, string name, int hp, int attack, int exp, int gold) // 적 추가
     {
-        var enemy = new Enemy(name, hp, attack,exp);
+        var enemy = new Enemy(indigator,name, hp, attack,exp,gold);
         Enemies.Add(enemy);
     }
 }
