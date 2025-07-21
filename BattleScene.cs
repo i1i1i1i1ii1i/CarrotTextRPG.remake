@@ -12,13 +12,13 @@ namespace carrotTextRPG;
 public class BattleScene : SceneLoader
 {
     int x = Console.WindowWidth, y = Console.WindowHeight; // 콘솔 사이즈
+    int dungeonCycle = 0;
     bool turn= true; // 플레이어 턴인지 적 턴인지 구분하는 변수
     private Player player;
     private List<Enemy> CurrentEnemies;
     private List<Enemy> TotalEnemies;
     Random random = new Random();
     int choice = 0; // 메뉴 인디게이터
-    private int dungeonCycle = 0;
     private List<string> options = new List<string> { "공격", "아이템", "도주" };
 
 
@@ -69,19 +69,14 @@ public class BattleScene : SceneLoader
                 Reward();
                 Console.WriteLine("알 수 없는 생물체를 처치했습니다!");
                 Thread.Sleep(300);
-                GameManager.Instance.dungeonCycle++; // 던전 사이클 증가
-                Console.WriteLine($"현재 던전을 {GameManager.Instance.dungeonCycle}회 클리하셨습니다.");
-                Console.ReadKey();
                 isBattle = false; // 배틀 종료
-                break;
+                continue;
             }
             else if (CheckLose()) // 패배 조건 확인
             {
                 Console.WriteLine("눈 앞이 컴컴해졌습니다.");
-                Console.ReadKey();
+                Thread.Sleep(300);
                 isBattle = false; // 배틀 종료
-                new MainMenuScene().MainMenu();
-                break;
             }
             else
             {
@@ -89,7 +84,8 @@ public class BattleScene : SceneLoader
                 Console.ReadKey();
             }
         }
-        if (GameManager.Instance.dungeonCycle == 1)
+        dungeonCycle++; // 던전 사이클 증가
+        if (dungeonCycle == 1)
         {
             ChooseClass();
         }
@@ -235,7 +231,7 @@ public class BattleScene : SceneLoader
 
         if (!int.TryParse(attack, out select)) // 숫자만 받을수 있게, 입력받은 숫자를 Select에 넣음
         {
-            Console.WriteLine("적을 정확히 노려주세요.");
+            Console.WriteLine("숫자만 입력해라 ㅇㅇ;");
             return;
         }
 
@@ -255,8 +251,7 @@ public class BattleScene : SceneLoader
         }
         else
         {
-            Console.WriteLine("적을 정확히 노려주세요."); // 예외로 다른 번호 입력할시
-            return;
+            Console.WriteLine("있는 애들 번호만 입력해주세요"); // 예외로 다른 번호 입력할시
         }
     }
 
@@ -271,7 +266,7 @@ public class BattleScene : SceneLoader
             Console.WriteLine($"{attack.Name}의 공격!");
             if (player.Dodge >= dotge)
             {
-                Console.WriteLine("\n적의 공격을 회피했습니다.");
+                Console.WriteLine("\n피햇지렁~");
             }
             else
             {
@@ -350,31 +345,22 @@ public class BattleScene : SceneLoader
             case 1:
                 Console.WriteLine("전사가 선택되었습니다.");
                 GameManager.Instance.Player.Class = "전사";
-                GameManager.Instance.Player.Armor += 5; // 전사 직업에 맞춰 스테이터스 조정
-                Thread.Sleep(1000);
-                Console.WriteLine("몸의 변화가 일어납니다.");
                 break;
             case 2:
                 Console.WriteLine("궁수가 선택되었습니다.");
                 GameManager.Instance.Player.Class = "궁수";
-                GameManager.Instance.Player.Critical += 5; // 궁수 직업에 맞춰 스테이터스 조정
-                Thread.Sleep(1000);
-                Console.WriteLine("몸의 변화가 일어납니다.");
                 break;
             case 3:
                 Console.WriteLine("마법사가 선택되었습니다.");
                 GameManager.Instance.Player.Class = "마법사";
-                GameManager.Instance.Player.Attack += 5; // 마법사 직업에 맞춰 스테이터스 조정
-                Thread.Sleep(1000);
-                Console.WriteLine("몸의 변화가 일어납니다.");
                 break;
             default:
                 Console.WriteLine("직업을 선택하지 않았습니다.");
-                Thread.Sleep(1000);
-                Console.WriteLine("몸의 아무런 변화가 일어나지 않습니다.");
                 break;
 
         }
+        Thread.Sleep(1000);
+        Console.WriteLine("스테이터스가 직업에 맞춰 조정됩니다.");
 
         Console.ReadKey();
     }

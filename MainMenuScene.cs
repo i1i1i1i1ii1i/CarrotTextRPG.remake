@@ -9,11 +9,11 @@ public class MainMenuScene : SceneLoader
     //string saveFile=SaveScene.FilePath; // 상대경로 (동일하게 맞춤)
 
     public MainMenuScene()
-    { // 게임 매니저에 적 추가 (indigator, name, hp, attack, exp, gold)
-        GameManager.Instance.AddEnemy(false,"슬라임", 50, 2,20,30);
-        GameManager.Instance.AddEnemy(false,"고블린", 40, 3,15,50);
-        GameManager.Instance.AddEnemy(false,"개", 30, 4, 10,100);
-        GameManager.Instance.AddEnemy(false,"거미", 20, 1, 5,5);
+    {
+        GameManager.Instance.AddEnemy(false,"사람", 50, 5,20,30);
+        GameManager.Instance.AddEnemy(false,"괴물", 40, 3,15,50);
+        GameManager.Instance.AddEnemy(false, "외계생명체", 30, 4, 10,100);
+        GameManager.Instance.AddEnemy(false, "돌", 20, 1, 5,5);
     }
     public override void LoadScene()
     {
