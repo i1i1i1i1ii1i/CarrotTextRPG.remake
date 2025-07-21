@@ -8,7 +8,7 @@ namespace CarrotTextRPG
 {
     class SaveScene : SceneLoader
     {
-        public string FilePath = "../../../PlayerData.json"; // 상대경로 (동일하게 맞춤)
+        private string FilePath = "../../../PlayerData.json"; // 상대경로 (동일하게 맞춤)
 
         public override void LoadScene()
         {

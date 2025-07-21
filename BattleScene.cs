@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Security.Cryptography.X509Certificates;
+using System.Collections.Generic;
 
 namespace carrotTextRPG;
 
@@ -20,11 +21,13 @@ public class BattleScene : SceneLoader
     private int dungeonCycle = 0;
     private List<string> options = new List<string> { "공격", "아이템", "도주" };
 
+
     public BattleScene(Player player)
     {
         this.player = player;
         CurrentEnemies = new List<Enemy>();
         TotalEnemies = new List<Enemy>();
+
     }
 
     public override void LoadScene()
@@ -400,4 +403,68 @@ public class BattleScene : SceneLoader
         // CurrentEnemies 리스트에서 HP가 0 이하인 모든 적을 제거
         CurrentEnemies.RemoveAll(enemy => enemy.HP <= 0);
     }
+
+    private void PlayerAttack()
+    {
+        string attack = Console.ReadLine(); // 플레이어가 어택할 생명체 번호
+        int select;
+        Random random = new Random();
+        int critical = random.Next(0, 101);
+
+        if (!int.TryParse(attack, out select)) // 숫자만 받을수 있게, 입력받은 숫자를 Select에 넣음
+        {
+            Console.WriteLine("숫자만 입력해라 ㅇㅇ;");
+            return;
+        }
+
+        if (select <= CurrentEnemies.Count && select > 0) // Select 보다 적거나 0 보다 많게
+        {
+            if (critical <= player.Critical)
+            {
+                CurrentEnemies[select - 1].HP -= (player.AttackBoosted * 160) / 100; // 크리티컬
+                Console.WriteLine("크리티컬!");
+            }
+            else
+            {
+                CurrentEnemies[select - 1].HP -= player.AttackBoosted; // 현재 선택한 enemy의 hp를 플레이어의 공격력으로 깎는다
+            }
+
+            Console.WriteLine($"{CurrentEnemies[select - 1].Name} : {CurrentEnemies[select - 1].HP}"); // 주석 가능 
+        }
+        else
+        {
+            Console.WriteLine("있는 애들 번호만 입력해주세요"); // 예외로 다른 번호 입력할시
+        }
+    }
+
+
+
+    private void EnemyAttack() // 여기서는 돌림빵만 구현
+    {
+        foreach(var attack in CurrentEnemies) // 
+        {
+            int dotge = random.Next(0, 101);
+            if(player.Dodge >= dotge)
+            {
+                Console.WriteLine("피햇지렁~");
+            }
+            else
+            {
+               if(attack.HP > 0)
+                {
+                    player.HP -= attack.Attack;
+                }
+            }
+        }
+        Console.WriteLine($"현재 체력 : {player.HP}");
+    }
+
+   
+
+    private void RemoveDeadEnemies() // 리스트에서 피가 0 이하로 내려가면 제거
+    {
+        CurrentEnemies.RemoveAll(enemy => enemy.HP <= 0);
+    }
+
+
 }

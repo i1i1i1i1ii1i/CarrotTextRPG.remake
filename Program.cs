@@ -22,5 +22,4 @@ class Program
         scene.LoadScene();
         Console.SetWindowSize(100, 51);
         Console.SetBufferSize(100, 51);
-    }
 }

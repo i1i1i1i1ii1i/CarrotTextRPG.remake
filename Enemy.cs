@@ -14,6 +14,7 @@ public class Enemy
     public Enemy (bool indigator, string name, int hp, int attack, int exp, int gold)
     {
        Indigator = indigator;
+
        Name = name;
        HP = hp;
        Attack = attack;

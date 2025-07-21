@@ -1,4 +1,4 @@
-﻿//using System;
+//using System;
 //using System.Runtime.InteropServices;
 
 //namespace carrotTextRPG
@@ -7,7 +7,7 @@
 //    {
 //        static int width = 90, height = 51;
 //        static int y = height;
-
+//
 //        public static void ShowLOGO()
 //        {
 //            Console.WriteLine(",------.                                       ,--.       ,--.                   ,--. ");
@@ -59,7 +59,6 @@
 //            Thread.Sleep(500);
 //            Console.ReadKey();
 //        }
-
 //public static void ChooseClass()
 //{
 //    Console.Clear();
@@ -99,7 +98,6 @@
 //            Console.WriteLine("마법사가 선택되었습니다.");
 //            GameManager.Instance.Player.Class = "마법사";
 //            break;
-
 //    }
 //    Thread.Sleep(1000);
 //    Console.WriteLine("스테이터스가 직업에 맞춰 조정됩니다.");
