@@ -33,6 +33,8 @@ public class StatusScene : SceneLoader
             Thread.Sleep(150);
             Console.WriteLine($"레  벨 : {GameManager.Instance.Player.Level}"); 
             Thread.Sleep(150);
+            Console.WriteLine($"경험치 : {GameManager.Instance.Player.Exp}/{GameManager.Instance.Player.MaxExp}");
+            Thread.Sleep(150);
             Console.WriteLine($"체  력 : {GameManager.Instance.Player.HP}/{GameManager.Instance.Player.MaxHP}"); 
             Thread.Sleep(150);
             Console.WriteLine($"공격력 : {GameManager.Instance.Player.Attack} {(bonusAtk > 0 ? $"(+{bonusAtk})" : "")}"); 

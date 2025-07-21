@@ -76,13 +76,13 @@ public class BattleScene : SceneLoader
             }
             else if (CheckLose()) // 패배 조건 확인
             {
-                Console.WriteLine("눈 앞이 컴컴해졌습니다.");
+                Console.WriteLine("눈 앞이 어두워졌습니다.");
                 Thread.Sleep(300);
                 isBattle = false; // 배틀 종료
             }
             else
             {
-                turn = !turn; // 턴 전환
+                turn = !turn; // 턴 
                 Console.ReadKey();
             }
         }
@@ -232,7 +232,7 @@ public class BattleScene : SceneLoader
 
         if (!int.TryParse(attack, out select)) // 숫자만 받을수 있게, 입력받은 숫자를 Select에 넣음
         {
-            Console.WriteLine("숫자만 입력해라 ㅇㅇ;");
+            Console.WriteLine("적을 정확히 노려주세요.");
             return;
         }
 
@@ -252,13 +252,13 @@ public class BattleScene : SceneLoader
         }
         else
         {
-            Console.WriteLine("있는 애들 번호만 입력해주세요"); // 예외로 다른 번호 입력할시
+            Console.WriteLine("적을 정확히 노려주세요."); // 예외로 다른 번호 입력할시
         }
     }
 
 
 
-    private void EnemyAttack() // 여기서는 돌림빵만 구현
+    private void EnemyAttack() 
     {
         foreach (var attack in CurrentEnemies) // 
         {
@@ -267,7 +267,7 @@ public class BattleScene : SceneLoader
             Console.WriteLine($"{attack.Name}의 공격!");
             if (player.Dodge >= dotge)
             {
-                Console.WriteLine("\n피햇지렁~");
+                Console.WriteLine("\n적의 공격을 회피했습니다.");
             }
             else
             {
@@ -346,14 +346,17 @@ public class BattleScene : SceneLoader
             case 1:
                 Console.WriteLine("전사가 선택되었습니다.");
                 GameManager.Instance.Player.Class = "전사";
+                GameManager.Instance.Player.Armor += 10; // 전사 공격력 증가
                 break;
             case 2:
                 Console.WriteLine("궁수가 선택되었습니다.");
                 GameManager.Instance.Player.Class = "궁수";
+                GameManager.Instance.Player.Critical += 5; // 궁수 공격력 증가
                 break;
             case 3:
                 Console.WriteLine("마법사가 선택되었습니다.");
                 GameManager.Instance.Player.Class = "마법사";
+                GameManager.Instance.Player.Attack += 5; // 마법사 공격력 증가
                 break;
             default:
                 Console.WriteLine("직업을 선택하지 않았습니다.");

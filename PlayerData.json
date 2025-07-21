@@ -1,25 +1,25 @@
 {
-  "Name": "ey",
-  "Level": 2,
-  "Exp": 45.1,
+  "Name": "Eunyong",
+  "Level": 1,
+  "Exp": 20,
   "Class": "마법사",
-  "Attack": 30,
-  "HP": 83,
-  "MaxHP": 101,
-  "Armor": 6,
-  "Gold": 999992800,
-  "Critical": 16,
-  "Dodge": 11,
+  "Attack": 15,
+  "HP": 100,
+  "MaxHP": 100,
+  "Armor": 5,
+  "Gold": 999992930,
+  "Critical": 15,
+  "Dodge": 10,
   "Inventory": [
     {
-      "Name": "수련자 갑옷",
+      "Name": "스파르타의 갑옷",
       "Attack": 0,
-      "Armor": 5,
+      "Armor": 15,
       "Type": "방어",
-      "Description": "수련에 도움을 주는 갑옷입니다.",
-      "Price": 1000,
+      "Description": "전설의 갑옷입니다.",
+      "Price": 3500,
       "Purchased": true,
-      "Equipped": false
+      "Equipped": true
     },
     {
       "Name": "스파르타의 창",
@@ -30,19 +30,9 @@
       "Price": 3000,
       "Purchased": true,
       "Equipped": true
-    },
-    {
-      "Name": "스파르타의 갑옷",
-      "Attack": 0,
-      "Armor": 15,
-      "Type": "방어",
-      "Description": "전설의 갑옷입니다.",
-      "Price": 3500,
-      "Purchased": true,
-      "Equipped": true
     }
   ],
-  "MaxExp": 100.9,
-  "AttackBoosted": 37,
-  "ArmorBoosted": 21
+  "MaxExp": 100,
+  "AttackBoosted": 22,
+  "ArmorBoosted": 20
 }

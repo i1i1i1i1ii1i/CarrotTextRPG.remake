@@ -20,12 +20,12 @@ namespace CarrotTextRPG
 
                 Console.WriteLine("1. 저장하기");
                 Console.WriteLine("2. 불러오기");
-                Console.WriteLine("0. 나가기\n");
+                Console.WriteLine("0. 종료\n");
 
                 Console.Write("원하시는 행동을 입력해주세요.\n>> ");
                 string input = Console.ReadLine();
 
-                if (input == "0") break;
+                if (input == "0") { Environment.Exit(0); }
                 else if (input == "1")
                 {
                     SaveData(GameManager.Instance.Player);

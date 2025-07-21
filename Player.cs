@@ -7,7 +7,7 @@ public class Player
 {
     public string Name { get; set; }
     public int Level { get; set; }
-    public float Exp { get; set; }
+    public int Exp { get; set; }
     public string Class { get; set; }
     public int Attack { get; set; }
     public int HP { get; set; }
@@ -18,11 +18,11 @@ public class Player
     public int Dodge { get; set; }
     public List<Item> Inventory { get; set; }
 
-    public float MaxExp // 최대 경험치 설정
+    public int MaxExp // 최대 경험치 설정
     { 
         get
         {
-            return 100 + (Level - 1.1f);
+            return 100 + (int)(Level - 1.1);
         } 
     }
 
@@ -55,7 +55,7 @@ public class Player
         }
     }
 
-    public void GainExp(float expAmount) // 경험치 획득
+    public void GainExp(int expAmount) // 경험치 획득
     {
         Exp += expAmount;
 
