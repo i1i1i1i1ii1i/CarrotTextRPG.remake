@@ -1,16 +1,48 @@
 {
   "Name": "ey",
-  "Level": 1,
-  "Exp": 20.0,
-  "Class": "",
-  "Attack": 10,
-  "HP": 85,
-  "Armor": 5,
-  "Gold": 1530,
-  "Critical": 15,
-  "Dodge": 10,
-  "Inventory": [],
-  "MaxExp": 99.9,
-  "AttackBoosted": 10,
-  "ArmorBoosted": 5
+  "Level": 2,
+  "Exp": 45.1,
+  "Class": "마법사",
+  "Attack": 30,
+  "HP": 83,
+  "MaxHP": 101,
+  "Armor": 6,
+  "Gold": 999992800,
+  "Critical": 16,
+  "Dodge": 11,
+  "Inventory": [
+    {
+      "Name": "수련자 갑옷",
+      "Attack": 0,
+      "Armor": 5,
+      "Type": "방어",
+      "Description": "수련에 도움을 주는 갑옷입니다.",
+      "Price": 1000,
+      "Purchased": true,
+      "Equipped": false
+    },
+    {
+      "Name": "스파르타의 창",
+      "Attack": 7,
+      "Armor": 0,
+      "Type": "공격",
+      "Description": "전설의 창입니다.",
+      "Price": 3000,
+      "Purchased": true,
+      "Equipped": true
+    },
+    {
+      "Name": "스파르타의 갑옷",
+      "Attack": 0,
+      "Armor": 15,
+      "Type": "방어",
+      "Description": "전설의 갑옷입니다.",
+      "Price": 3500,
+      "Purchased": true,
+      "Equipped": true
+    }
+  ],
+  "MaxExp": 100.9,
+  "AttackBoosted": 37,
+  "ArmorBoosted": 21
 }

@@ -12,13 +12,14 @@ namespace carrotTextRPG;
 public class BattleScene : SceneLoader
 {
     int x = Console.WindowWidth, y = Console.WindowHeight; // 콘솔 사이즈
-    int dungeonCycle = 0;
+    
     bool turn= true; // 플레이어 턴인지 적 턴인지 구분하는 변수
     private Player player;
     private List<Enemy> CurrentEnemies;
     private List<Enemy> TotalEnemies;
     Random random = new Random();
     int choice = 0; // 메뉴 인디게이터
+    private int dungeonCycle = 0; // 던전 사이클 변수
     private List<string> options = new List<string> { "공격", "아이템", "도주" };
 
 
@@ -68,6 +69,7 @@ public class BattleScene : SceneLoader
             {
                 Reward();
                 Console.WriteLine("알 수 없는 생물체를 처치했습니다!");
+                GameManager.Instance.dungeonCycle++; // 던전 사이클 증가
                 Thread.Sleep(300);
                 isBattle = false; // 배틀 종료
                 continue;
@@ -84,8 +86,7 @@ public class BattleScene : SceneLoader
                 Console.ReadKey();
             }
         }
-        dungeonCycle++; // 던전 사이클 증가
-        if (dungeonCycle == 1)
+        if (GameManager.Instance.dungeonCycle == 1)
         {
             ChooseClass();
         }

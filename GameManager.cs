@@ -10,6 +10,7 @@ public class GameManager
     public Player Player { get; set; }
     public List<Enemy> Enemies { get; private set; } = new List<Enemy>(); // Enemies 담을 리스트 형태의 그릇
     public List<Item> Items { get; private set; } = new List<Item>();// 아이템
+    public int dungeonCycle { get; set; } = 0; // 던전 사이클 관리용 변수
 
     public static GameManager Instance // 게임 매니저 싱글톤
     {
@@ -33,7 +34,7 @@ public class GameManager
             MaxHP = 100,
             Attack = 10,
             Armor = 5,
-            Gold = 1500,
+            Gold = 1000000000,
             Inventory = new List<Item>(),
             Critical = 15,
             Dodge = 10,
